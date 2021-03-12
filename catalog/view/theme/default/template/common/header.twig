@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+{% if robots %}
+<meta name="robots" content="{{ robots }}" />
+{% endif %}
+<base href="{{ base }}" />
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+{% if keywords %}
+<meta name="keywords" content="{{ keywords }}" />
+{% endif %}
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ og_url }}" />
+{% if og_image %}
+<meta property="og:image" content="{{ og_image }}" />
+{% else %}
+<meta property="og:image" content="{{ logo }}" />
+{% endif %}
+<meta property="og:site_name" content="{{ name }}" />
+<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="catalog/view/javascript/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/jquery/magnific/jquery.magnific-popup.min.js"></script>
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}"/>
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+{% for link in links %}
+<link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+</head>
+
+<body>
+
+<div class="content__inner">
+
+    <div class="content__inner-box">
+
+        <div class="content__body">
+
+            <header>
+
+            <nav id="top">
+
+                <div class="container">
+
+                    <div class="header__top">
+
+                        <div class="header__language"><img src="/image/catalog/header/language.png" alt="language"><span>{{ text_language_text }}</span></div>
+
+                        <div class="header__account">
+
+                            <ul class="header__account-list">
+
+                                <li class="dropdown">
+
+{#                                    <a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle header__account-link" data-toggle="dropdown">#}
+                                    <a href="#form-popup" class="dropdown-toggle header__account-link popup-with-form">
+{#                                        <p class="footer__item-text service-text">#}
+{#                                            <a href="#form-popup" class="footer__item-text-link popup-with-form">Добро позаловать</a>#}
+{#                                        </p>#}
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="welcome-user__icon">
+                                            <use xlink:href="/img/icon/sprite.svg#userIcon"></use>
+                                        </svg>
+
+                                        <span class="header__account-text">{{ text_welcome }}</span>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="welcome-arrow__icon">
+                                            <use xlink:href="/img/icon/sprite.svg#arrowDown"></use>
+                                        </svg>
+
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-right">
+
+                                        {% if logged %}
+
+                                            <li><a href="{{ account }}">{{ text_account }}</a></li>
+
+                                            <li><a href="{{ order }}">{{ text_order }}</a></li>
+
+                                            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
+
+                                            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+
+                                        {% else %}
+
+                                            <li><a href="{{ register }}">{{ text_register }}</a></li>
+
+                                            <li><a href="{{ login }}">{{ text_login }}</a></li>
+
+                                        {% endif %}
+
+                                    </ul>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </nav>
+
+            <div class="header__container-box">
+
+                <div class="container">
+
+                    <div class="header__inner">
+
+                        <div class="header__inner-box">
+
+                            <div class="header__logo" id="logo">
+
+                                {% if logo %}
+                                    {% if home == og_url %}
+                                        <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
+                                    {% else %}
+                                        <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>
+                                    {% endif %}
+                                {% else %}
+                                    <h1><a href="{{ home }}">{{ name }}</a></h1>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="header__search">
+                                {{ menucatalog }}
+                                {{ search }}
+                            </div>
+
+                        </div>
+
+                        <div class="header__items">
+
+                            <a class="header__item" href="{{ checkout }}" title="{{ text_checkout }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="order-box__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#orderBox"></use>
+                                </svg>
+                                {{ text_checkout }}
+                            </a>
+
+                            <a class="header__item" href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="heart__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#heart"></use>
+                                </svg>
+                                {{ text_wishlist }}
+                            </a>
+
+                            <a class="header__item" href="{{ shopping_cart }}" title="{{ text_shopping_cart }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cart__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#cart"></use>
+                                </svg>
+                                {{ text_shopping_cart }}
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="container">
+
+                <div class="header__wrapper">
+
+                    <div id="catalog" class="header__catalog">
+
+                        <div class="header__catalog-box">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="category__icon">
+                                <use xlink:href="/img/icon/sprite.svg#category"></use>
+                            </svg>
+
+                            <span>{{ text_catalog_btn }}</span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="header__information">
+                        <a href="index.php?route=information/about" class="header__information-link">{{ text_about_us }}</a>
+                        <a href="index.php?route=checkout/checkout" class="header__information-link">{{ text_arrange_order }}</a>
+                        <a href="index.php?route=information/paymentmetod" class="header__information-link">{{ text_payment_method }}</a>
+                        <a href="index.php?route=information/deliveryinfo" class="header__information-link">{{ text_delivery_method }}</a>
+                        <a href="index.php?route=information/contact" class="header__information-link">{{ text_contact }}</a>
+                    </div>
+
+                </div>
+
+                {{ menu }}
+
+            </div>
+
+        </header>
+
+        <div id="form-popup" class="popup-box mfp-hide">
+
+            <div class="popup__title-box">
+
+                <span data-tab="login-popup" class="nav-tab active">Вход</span>
+
+                <span data-tab="register-popup" class="nav-tab">Регистрация</span>
+
+            </div>
+
+            <div id="login-popup" class="tab active">
+
+                <form class="popup__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
+
+                    <div class="popup__item-box">
+                        <label class="input__title" for="input-email">Номер телефона</label>
+                        <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input__item" />
+                    </div>
+
+                    <div class="popup__item-box">
+                        <label class="input__title" for="input-password">Пароль</label>
+                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="input__item" />
+                    </div>
+
+                    <input type="submit" value="{{ button_login }}" class="btn btn-primary" />
+
+                    <a href="index.php?route=account/forgotten">Забыли пароль?</a>
+
+                </form>
+
+            </div>
+
+            <div id="register-popup" class="tab">
+
+                <form class="popup__form" enctype="multipart/form-data" method="post" id="formPopup">
+
+                    REGISTER
+
+                </form>
+
+            </div>
+
+        </div>
+
+{#----------start tab popup----------#}
+<script>
+    function Tabs() {
+    let bindAll = function() {
+    let menuElements = document.querySelectorAll('[data-tab]');
+    for(let i = 0; i < menuElements.length ; i++) {
+    menuElements[i].addEventListener('click', change, false);
+    }
+    }
+
+    let clear = function() {
+    let menuElements = document.querySelectorAll('[data-tab]');
+    for(let i = 0; i < menuElements.length ; i++) {
+    menuElements[i].classList.remove('active');
+    let id = menuElements[i].getAttribute('data-tab');
+    document.getElementById(id).classList.remove('active');
+    }
+    }
+
+    let change = function(e) {
+    clear();
+    e.target.classList.add('active');
+    let id = e.currentTarget.getAttribute('data-tab');
+    document.getElementById(id).classList.add('active');
+    }
+
+    bindAll();
+    }
+
+    let connectTabs = new Tabs();
+</script>
+{#----------end tab popup----------#}
+
+<script>
+    $('.popup-with-form').magnificPopup({
+        type: 'inline',
+        // focus: '#message',
+        // type: 'ajax',
+        mainClass: 'mfp-fade',
+        midClick: true,
+        closeOnBgClick: true
+    });
+
+    $(document).on('click', '.close__btn', function(e) {
+        e.preventDefault();
+        $.magnificPopup.close();
+    });
+</script>
+
+<script>
+    const btnMenu = document.getElementById('catalog');
+    const menu = document.getElementById('menu');
+    const toggleMenu = function() {
+        menu.classList.toggle('cat-open');
+    }
+
+    btnMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenu();
+    });
+
+    document.addEventListener('click', function(e) {
+        const target = e.target;
+        const its_menu = target == menu || menu.contains(target);
+        const its_btnMenu = target == btnMenu;
+        const menu_is_active = menu.classList.contains('cat-open');
+
+        if (!its_menu && !its_btnMenu && menu_is_active) {
+            toggleMenu();
+        }
+    });
+</script>

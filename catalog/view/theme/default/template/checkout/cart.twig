@@ -1,0 +1,215 @@
+{{ header }}
+      <div id="checkout-cart" class="container">
+
+        <ul class="breadcrumb">
+          {% for key, breadcrumb in breadcrumbs %}
+            {% if key + 1 < breadcrumbs|length %}
+              <li class="breadcrumb__item">
+                <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+              </li>
+            {% else %}
+              <li class="breadcrumb__item breadcrumb__item-active">{{ heading_title_text }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        {% if attention %}
+        <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ attention }}
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        {% endif %}
+
+        {% if success %}
+        <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        {% endif %}
+
+        {% if error_warning %}
+        <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+        {% endif %}
+
+        <div class="row">{{ column_left }}
+          {% if column_left and column_right %}
+          {% set class = 'col-sm-6' %}
+          {% elseif column_left or column_right %}
+          {% set class = 'col-sm-9' %}
+          {% else %}
+          {% set class = 'col-sm-12' %}
+          {% endif %}
+
+          <div id="content" class="{{ class }}">
+            {{ content_top }}
+
+            <h3 class="item__main-title">{{ heading_title_text }}</h3>
+            <span class="item__main-line"></span>
+
+            <div class="cart__wrapper">
+
+              <div class="cart__content">
+
+                <form action="{{ action }}" method="post" enctype="multipart/form-data">
+
+                    <table class="cart__table">
+                      <thead class="cart__thead-title">
+                      <tr>
+                        <td class="cart__content-title cart__content-name">{{ column_name }}</td>
+                        <td class="cart__content-title cart__content-quantity">{{ column_quantity }}</td>
+                        <td class="cart__content-title cart__content-price">{{ column_price }}</td>
+                        <td class="cart__content-title cart__content-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="delete__icon">
+                            <use xlink:href="/img/icon/sprite.svg#delete"></use>
+                          </svg>
+                        </td>
+                      </tr>
+                      </thead>
+
+                      <tbody>
+
+                      {% for product in products %}
+
+                        <tr>
+
+                          <td aria-label="{{ column_name }}" class="cart__tbody-name">
+                            {% if product.thumb %}
+                              <a href="{{ product.href }}">
+                                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-cart" />
+                              </a>
+                            {% endif %}
+
+                            <a class="cart__tbody-link" href="{{ product.href }}">{{ product.name }}</a>
+                            {% if not product.stock %}
+                              <span class="text-danger">***</span>
+                            {% endif %}
+
+                          </td>
+
+                          <td aria-label="{{ column_quantity }}" class="cart__tbody-quantity">
+
+                            <div class="cart__tbody-quantity-inner">
+
+                              <div class="cart__tbody-quantity-box">
+
+                                <button type="submit" data-toggle="tooltip" class="cart__minusBtn">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="cart__minusBtn-icon">
+                                    <use xlink:href="/img/icon/sprite.svg#cartMinusIcon"></use>
+                                  </svg>
+                                </button>
+
+                                <input type="text" name="quantity[{{ product.cart_id }}]" class="quant__cart" value="{{ product.quantity }}" size="1"/>
+
+                                <button type="submit" data-toggle="tooltip" class="cart__plusBtn">
+                                  <svg xmlns="http://www.w3.org/2000/svg" class="cart__plusBtn-icon">
+                                    <use xlink:href="/img/icon/sprite.svg#cartPlusIcon"></use>
+                                  </svg>
+                                </button>
+
+                              </div>
+
+                            </div>
+
+                          </td>
+
+                          <td aria-label="{{ column_price }}" class="cart__tbody-price">{{ product.price }} TMT</td>
+
+                          <td aria-label="" class="cart__tbody-delete">
+
+                          <div class="cart__delete-inner">
+                            <div class="cart__delete-box">
+                              <button type="button" data-toggle="tooltip" title="{{ button_remove }}" class="" onclick="cart.remove('{{ product.cart_id }}');">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cart__delete-icon">
+                                  <use xlink:href="/img/icon/sprite.svg#deleteIcon"></use>
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+
+                          </td>
+                        </tr>
+
+                      {% endfor %}
+
+                      </tbody>
+
+                    </table>
+
+                </form>
+
+              </div>
+
+              <div class="cart__summ">
+
+                <div class="cart__summ-inner">
+
+                  <div class="cart-summ__order-box">
+                    <p>{{ cart_summ_text }}</p>
+                    <span>{{ totals[0].text|number_format }} ТМТ</span>
+                  </div>
+
+                  <div class="cart-delivery-box">
+                    <p>{{ cart_summ_delivery_text }}</p>
+                    <span>{{ total.text }} ТМТ</span>
+                  </div>
+
+                </div>
+
+                  <div class="cart-summ__total-box">
+                    <p>{{ cart_summ_total_text }}</p>
+                    <span>{{ totals[0].text|number_format }} ТМТ</span>
+                  </div>
+
+                  <a class="cart-summ__check" href="{{ checkout }}">{{ cart_button_checkout }}</a>
+
+              </div>
+
+            </div>
+
+{#            {% if modules %}#}
+{#            <h2>{{ text_next }}</h2>#}
+{#            <p>{{ text_next_choice }}</p>#}
+
+{#            <div class="panel-group" id="accordion"> #}
+{#              {% for module in modules %}#}
+{#              {{ module }}#}
+{#              {% endfor %} #}
+{#            </div>#}
+{#            {% endif %}#}
+
+
+            {{ content_bottom }}
+          </div>
+          {{ column_right }}
+        </div>
+
+      </div>
+
+{#--------------------START ADD QUANTiTY CHANGE--------------------------#}
+<script>
+  $(document).ready(function() {
+    $('.cart__minusBtn').click(function () {
+      let $input = $(this).parent().find('.quant__cart');
+      let count = parseInt($input.val()) - 1;
+      count = count < 1 ? 1 : count;
+      $input.val(count);
+      $input.change().edit();
+      return false;
+    });
+
+    $('.cart__plusBtn').click(function () {
+      let $input = $(this).parent().find('.quant__cart');
+      $input.val(parseInt($input.val()) + 1);
+      $input.change().edit();
+      return false;
+    });
+  });
+</script>
+
+{#--------------------END ADD QUANTiTY CHANGE--------------------------#}
+
+</div>
+
+{{ footer }}
+
+

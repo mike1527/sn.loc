@@ -1,0 +1,54 @@
+@font-face {
+	font-family: 'Helvetica-Regular';
+	src: url('/catalog/view/theme/fonts/Helvetica-Regular.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/Helvetica-Regular.woff') format('woff'), url('/catalog/view/theme/fonts/Helvetica-Regular.woff2') format('woff2'), url('/catalog/view/theme/fonts/Helvetica-Regular.svg') format('svg'), url('/catalog/view/theme/fonts/Helvetica-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Helvetica-Bold';
+	src: url('/catalog/view/theme/fonts/Helvetica-Bold.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/Helvetica-Bold.woff') format('woff'), url('/catalog/view/theme/fonts/Helvetica-Bold.woff2') format('woff2'), url('/catalog/view/theme/fonts/Helvetica-Bold.svg') format('svg'), url('/catalog/view/theme/fonts/Helvetica-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Helvetica-Light';
+	src: url('/catalog/view/theme/fonts/Helvetica-Light.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/Helvetica-Light.woff') format('woff'), url('/catalog/view/theme/fonts/Helvetica-Light.woff2') format('woff2'), url('/catalog/view/theme/fonts/Helvetica-Light.svg') format('svg'), url('/catalog/view/theme/fonts/Helvetica-Light.ttf') format('ttf');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HelveticaLTStd-Fraction-Bold';
+	src: url('/catalog/view/theme/fonts/HelveticaLTStd-Fraction-Bold.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fraction-Bold.woff') format('woff'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fraction-Bold.woff2') format('woff2'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fraction-Bold.svg') format('svg'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fraction-Bold.ttf') format('ttf');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'HelveticaLTStd-Fractions-Regular';
+	src: url('/catalog/view/theme/fonts/HelveticaLTStd-Fractions-Regular.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fractions-Regular.woff') format('woff'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fractions-Regular.woff2') format('woff2'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fractions-Regular.svg') format('svg'), url('/catalog/view/theme/fonts/HelveticaLTStd-Fractions-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MicrosoftSansSerif-Regular';
+	src: url('/catalog/view/theme/fonts/MicrosoftSansSerif-Regular.eot');
+	src: local('☺'), url('/catalog/view/theme/fonts/MicrosoftSansSerif-Regular.woff') format('woff'), url('/catalog/view/theme/fonts/MicrosoftSansSerif-Regular.woff2') format('woff2'), url('/catalog/view/theme/fonts/MicrosoftSansSerif-Regular.svg') format('svg'), url('/catalog/view/theme/fonts/MicrosoftSansSerif-Regular.ttf') format('ttf');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+

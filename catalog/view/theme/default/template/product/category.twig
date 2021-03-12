@@ -1,0 +1,175 @@
+{{ header }}
+            <div id="product-category" class="container">
+
+                <ul class="breadcrumb">
+                    {% for key, breadcrumb in breadcrumbs %}
+                        {% if key + 1 < breadcrumbs|length %}
+                            <li class="breadcrumb__item">
+                                <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+                            </li>
+                        {% else %}
+                            <li class="breadcrumb__item breadcrumb__item-active">{{ breadcrumb.text }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+              <div class="category__wrapper">
+                {{ column_left }}
+                {% if column_left and column_right %}
+                {% set class = 'col-sm-6' %}
+                {% elseif column_left or column_right %}
+                {% set class = 'col-sm-9' %}
+                {% else %}
+                {% set class = 'col-sm-12' %}
+                {% endif %}
+                <div id="content" class="{{ class }}">
+                    {{ content_top }}
+
+                  <div class="category__title-box">
+
+                    <div class="category__title-inner">
+                      <h3 class="item__main-title">{{ heading_title }}</h3>
+                      <span class="item__main-line"></span>
+                    </div>
+
+                    <div class="category__title-sort">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="select-arrow__icon">
+                            <use xlink:href="/img/icon/sprite.svg#selectArrowDown"></use>
+                        </svg>
+
+                      <select id="input-sort" onchange="location = this.value;">
+
+                        {% for sorts in sorts %}
+                          {% if sorts.value == '%s-%s'|format(sort, order) %}
+
+                            <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+
+                          {% else %}
+
+                            <option value="{{ sorts.href }}">{{ sorts.text }}</option>
+
+                          {% endif %}
+                        {% endfor %}
+
+                      </select>
+                    </div>
+
+
+                  </div>
+
+                  {% if products %}
+
+                  <div class="item__wrapper">
+                    {% for product in products %}
+
+                      <div class="item__box">
+
+                        <div class="item__img-inner">
+                          <a href="{{ product.href }}">
+                            <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                          </a>
+                        </div>
+
+                          <div class="item__content">
+
+                            <h4 class="item__content-title">{{ product.name }}</h4>
+
+                            {% if product.rating %}
+                              <div class="rating">
+                                {% for i in 1..5 %}
+                                  {% if product.rating < i %}
+                                    <span class="fa-stack rating__star-box">
+                                              <i class="fa-star-o rating__star">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__empty">
+                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                </svg>
+                                              </i>
+                                          </span>
+                                  {% else %}
+                                    <span class="fa-stack rating__star-box">
+                                              <i class="fa-star rating__star">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__active">
+                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                </svg>
+                                              </i>
+                                              <i class="fa-star-o rating__star">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon">
+                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                </svg>
+                                              </i>
+                                          </span>
+                                  {% endif %}
+                                {% endfor %}
+
+                                <span class="item__reviews">{{ product.reviews }} {{ item_reviews }}</span>
+
+                              </div>
+                            {% endif %}
+
+                            {% if product.price %}
+                              <p class="item__price">
+                                {% if not product.special %}
+                                  <span class="item__price-text">{{ product.price }} TMT</span>
+                                {% else %}
+                                  <span class="item__price-text">{{ product.price }} TMT</span>
+                                {% endif %}
+                                {% if product.tax %}
+                                {% endif %}
+                              </p>
+                            {% endif %}
+
+                            <a href="{{ product.href }}" class="item__content-link">{{ heading_item_link }}</a>
+
+                          </div>
+
+                      </div>
+
+                    {% endfor %}
+
+                  </div>
+
+                  <div class="pagination__box">
+                      <div class="pagination__inner">
+                          <button class="pagination__btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="pagination-left__icon">
+                                  <use xlink:href="/img/icon/sprite.svg#pagginationLeftBtn"></use>
+                              </svg>
+                          </button>
+                          <form action="#">
+                              <input class="pagination__num" type="number" min="1" name="pagination-page">
+                          </form>
+                          <button class="pagination__btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="pagination-right__icon">
+                                  <use xlink:href="/img/icon/sprite.svg#pagginationRightBtn"></use>
+                              </svg>
+                          </button>
+                            <div class="pagination__text">{{ results }}</div>
+                      </div>
+            {#        <div class="col-sm-6 text-left">{{ pagination }}</div>#}
+
+
+                  </div>
+
+                  {% endif %}
+
+                  {% if not categories and not products %}
+                  <p>{{ text_empty }}</p>
+                  <div class="buttons">
+            {#        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>#}
+                  </div>
+                  {% endif %}
+
+                  {{ content_bottom }}
+                </div>
+                {{ column_right }}
+              </div>
+            </div>
+
+
+        </div>
+
+            {{ footer }}
+
+
+

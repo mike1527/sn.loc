@@ -1,0 +1,33 @@
+<div class="category__list-group">
+  <h3 class="category__list-title">{{ heading_title }}</h3>
+
+  <div class="category__list-inner">
+    {% for category in categories %}
+    {% if category.category_id == category_id %}
+    <a href="{{ category.href }}" class="category__list-item active">
+      <svg xmlns="http://www.w3.org/2000/svg" class="cat-arrow__icon">
+        <use xlink:href="/img/icon/sprite.svg#catArrowDown"></use>
+      </svg>
+      {{ category.name }}
+    </a>
+    {% if category.children %}
+    {% for child in category.children %}
+    {% if child.category_id == child_id %}
+    <a href="{{ child.href }}" class="category__list-item-child active">{{ child.name }}</a>
+    {% else %}
+    <a href="{{ child.href }}" class="category__list-item-child">{{ child.name }}</a>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% else %}
+    <a href="{{ category.href }}" class="category__list-item">
+      <svg xmlns="http://www.w3.org/2000/svg" class="cat-arrow__icon">
+        <use xlink:href="/img/icon/sprite.svg#catArrowDown"></use>
+      </svg>
+      {{ category.name }}
+    </a>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+</div>

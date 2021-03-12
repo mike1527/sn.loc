@@ -1,0 +1,74 @@
+{#<div class="category__list-group">#}
+    <div class="category__list-group">
+        <h3 class="category__list-title">
+            <a class="">{{ price_title }}</a>
+        </h3>
+        <div class="filter__price-box">
+            <input type="number" min="1" placeholder="{{ input_from }}">
+            <input type="number" min="1" placeholder="{{ input_before }}">
+        </div>
+    </div>
+
+{#<style>#}
+{#    input[type="number"]::-webkit-outer-spin-button,#}
+{#    input[type="number"]::-webkit-inner-spin-button {#}
+{#        -webkit-appearance: none;#}
+{#        margin: 0;#}
+{#    }#}
+{#    input[type="number"] {#}
+{#        -moz-appearance: textfield;#}
+{#    }#}
+{#    input[type="number"]:hover,#}
+{#    input[type="number"]:focus {#}
+{#        -moz-appearance: number-input;#}
+{#    }#}
+{#    input[type=number]::-webkit-inner-spin-button,#}
+{#    input[type=number]::-webkit-outer-spin-button {#}
+{#        -webkit-appearance: none;#}
+{#        margin: 0;#}
+{#    }#}
+{#</style>#}
+
+    {% for filter_group in filter_groups %}
+    <div class="category__list-group">
+      <h3 class="category__list-title">
+        <a class="">{{ filter_group.name }}</a>
+      </h3>
+
+      <div id="{{ filter_group.filter_group_id }}">
+        {% for filter in filter_group.filter %}
+        <div class="filter__box">
+          <label class="filter__list-item label__keep">{% if filter.filter_id in filter_category %}
+            <input class="input__keep" type="checkbox" name="filter[]" value="{{ filter.filter_id }}" checked="checked" />
+            <span class="span-input__keep-style"></span>
+            {{ filter.name }}
+            {% else %}
+            <input class="input__keep" type="checkbox" name="filter[]" value="{{ filter.filter_id }}" />
+            <span class="span-input__keep-style"></span>
+            {{ filter.name }}
+            {% endif %}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+
+
+  <div class="filter__btn">
+    <button type="button" id="button-filter" class="">{{ button_filter }}</button>
+  </div>
+
+{#</div>#}
+
+<script type="text/javascript">
+$('#button-filter').on('click', function() {
+	filter = [];
+
+	$('input[name^=\'filter\']:checked').each(function(element) {
+		filter.push(this.value);
+	});
+
+	location = '{{ action }}&filter=' + filter.join(',');
+});
+</script>

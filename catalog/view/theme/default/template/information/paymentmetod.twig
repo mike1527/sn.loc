@@ -1,0 +1,30 @@
+{{ header }}
+
+  <div id="information-paymentmethod" class="container">
+
+    <ul class="breadcrumb">
+      {% for key, breadcrumb in breadcrumbs %}
+        {% if key + 1 < breadcrumbs|length %}
+          <li class="breadcrumb__item">
+            <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+          </li>
+        {% else %}
+          <li class="breadcrumb__item breadcrumb__item-active">{{ breadcrumb.text }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <h3 class="item__main-title">{{ heading_title_text }}</h3>
+    <span class="item__main-line"></span>
+
+    <p class="info__text">{{ info_text_1 }}</p>
+    <p class="info__text">{{ info_text_2 }}</p>
+    <p class="info__text">{{ info_text_3 }}</p>
+    <p class="info__text">{{ info_text_4 }}</p>
+
+
+  </div>
+
+</div>
+
+{{ footer }}

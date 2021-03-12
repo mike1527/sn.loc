@@ -1,0 +1,59 @@
+{% if categories %}
+  <nav id="menu" class="navbar">
+    <div id="catalogBox" class="catalog__container">
+{#      <div class="navbar-header">#}
+{#        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target="navbar-ex1-collapse"><i class="fa fa-bars"></i></button>#}
+{#      </div>#}
+{#      <div class="collapse__list-items bottom-catalog__list">#}
+        <ul class="catalog__category-list">
+          {% for category in categories %} {% if category.children %}
+            <li class="catalog__item">
+              <a href="{{ category.href }}" class="dropdown-toggle catalog__item-link" data-toggle="dropdown">
+                <h4 class="catalog__item-title">{{ category.name }}</h4>
+              </a>
+              <div class="dropdown-inner">
+                {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                  {% for child in children %}
+                    <div class="list-unstyled__item"><a class="list-unstyled__item-link" href="{{ child.href }}">{{ child.name }}</a></div>
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </li>
+          {% else %}
+            <li class="catalog__item">
+              <a class="catalog__item-link" href="{{ category.href }} ">
+                <h4 class="catalog__item-title">{{ category.name }}</h4>
+              </a>
+            </li>
+          {% endif %} {% endfor %}
+        </ul>
+{#      </div>#}
+    </div>
+  </nav>
+{% endif %}
+
+
+<script>
+
+  let myAccordion = document.getElementsByClassName('catalog__item');
+  for (let i = 0; i < myAccordion.length; i++) {
+    myAccordion[i].addEventListener('click', function () {
+      this.classList.toggle('active-click')
+    });
+  }
+
+
+
+  // $(function() {
+  //   $('.header__top-close-mobile-btn').click(function () {
+  //     $('.catalog__title').toggleClass('toggle');
+  //   });
+  // });
+  // $(function() {
+  //   $('.catalog-btn__mobile').click(function () {
+  //     $('.catalog__container-mobile').addClass('active');
+  //   });
+  // });
+
+</script>
+

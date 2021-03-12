@@ -1,0 +1,46 @@
+{% if reviews %}
+{% for review in reviews %}
+
+<div class="product__user-rew">
+
+  <div class="product__user-box">
+
+    <h2 class="product__user-title">{{ review.author }}</h2>
+
+    <div class="product__user-rating">
+      <span class="rating__num">5.0</span>
+      {% for i in 1..5 %}
+        {% if review.rating < i %}
+          <span>
+          <i><svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__empty">
+                <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+            </svg></i>
+        </span>
+        {% else %}
+          <span>
+          <i><svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__active">
+                <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+            </svg></i>
+        </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+
+  <p class="product__user-rew-added">
+    {{ review.date_added }}
+  </p>
+
+  <p class="product__user-rew-text">
+    {{ review.text }}
+  </p>
+
+</div>
+
+
+{% endfor %}
+<div class="text-right">{{ pagination }}</div>
+{% else %}
+<p>{{ text_no_reviews }}</p>
+{% endif %}

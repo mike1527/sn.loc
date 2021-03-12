@@ -1,0 +1,140 @@
+{{ header }}
+
+    <div id="information-contact" class="container">
+
+      <ul class="breadcrumb">
+        {% for key, breadcrumb in breadcrumbs %}
+          {% if key + 1 < breadcrumbs|length %}
+            <li class="breadcrumb__item">
+              <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+            </li>
+          {% else %}
+            <li class="breadcrumb__item breadcrumb__item-active">{{ breadcrumb.text }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      <h3 class="item__main-title">{{ heading_title_text }}</h3>
+      <span class="item__main-line"></span>
+
+      <div class="row">{{ column_left }}
+        {% if column_left and column_right %}
+        {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+        {% set class = 'col-sm-9' %}
+        {% else %}
+        {% set class = 'col-sm-12' %}
+        {% endif %}
+          {{ content_top }}
+
+          <div class="contact__wrapper">
+
+            <div class="contact__form">
+
+              <form action="{{ action }}" method="post" enctype="multipart/form-data">
+
+                <div class="contact__inner">
+
+                  <div class="input__item-box input__contact-box">
+                      <label class="input__title" for="input-firstname">{{ entry_name }}</label>
+                      <input type="text" name="name" value="{{ name }}" id="input-firstname" class="input__item" placeholder="{{ entry_name_placeholder }}"/>
+                      {% if error_name %}
+                        <div class="text-danger">{{ error_name }}</div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input__item-box input__contact-box">
+                      <label class="input__title" for="input-last-name">{{ entry_lastname }}</label>
+                      <input type="text" name="lastname" value="{{ email }}" id="input-last-name" class="input__item" placeholder="{{ entry_lastname_placeholder }}"/>
+                      {% if error_email %}
+                        <div class="text-danger">{{ error_email }}</div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input__item-box input__contact-box">
+                      <label class="input__title" for="input-phone">{{ entry_phone }}</label>
+                      <input type="number" name="phone" value="{{ name }}" id="input-phone" class="input__item" placeholder="{{ entry_phone_placeholder }}"/>
+                      {% if error_name %}
+                        <div class="text-danger">{{ error_name }}</div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input__item-box input__contact-box">
+                      <label class="input__title" for="input-email">{{ entry_email }}</label>
+                      <input type="email" name="email" value="{{ email }}" id="input-email" class="input__item" placeholder="{{ entry_email_placeholder }}"/>
+                      {% if error_email %}
+                        <div class="text-danger">{{ error_email }}</div>
+                      {% endif %}
+                  </div>
+
+                </div>
+
+                  <div class="input__comment-box">
+                    <label class="input__title" for="input-enquiry">{{ entry_enquiry }}</label>
+                      <textarea name="enquiry" id="input-enquiry" class="input__comment" placeholder="{{ entry_enquiry_placeholder }}">{{ enquiry }}</textarea>
+                      {% if error_enquiry %}
+                        <div class="text-danger">{{ error_enquiry }}</div>
+                      {% endif %}
+                  </div>
+
+                  {{ captcha }}
+
+                      <div class="contact__btn-box">
+                          <input class="form__btn" type="submit" value="{{ button_submit_contact }}" />
+                      </div>
+
+              </form>
+
+            </div>
+
+            <div class="contact__info">
+
+                <div class="contact__info-box">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="map__icon">
+                        <use xlink:href="/img/icon/sprite.svg#mapIcon"></use>
+                    </svg>
+                    <h3 class="contact__info-title">{{ text_contact_info_address }}</h3>
+                    <p class="contact__info-text">{{ address }}</p>
+
+                </div>
+
+                <div class="contact__info-box">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="phone__icon">
+                        <use xlink:href="/img/icon/sprite.svg#phoneCallIcon"></use>
+                    </svg>
+                    <h3 class="contact__info-title">{{ text_contact_info_phone }}</h3>
+                    <p class="contact__info-text">
+                        {{ telephone }}
+                    </p>
+                    <p class="contact__info-text contact__info-tel">
+                        {% if fax %}
+                            {{ fax }}
+                        {% endif %}
+                    </p>
+
+                </div>
+
+                <div class="contact__info-box">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mail__icon">
+                        <use xlink:href="/img/icon/sprite.svg#mailIcon"></use>
+                    </svg>
+                    <h3 class="contact__info-title">{{ text_contact_info_mail }}</h3>
+                    <p class="contact__info-text">info@snmarket.com</p>
+
+                </div>
+
+
+                    </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+</div>
+
+{{ footer }}
