@@ -225,9 +225,9 @@
 
             <div class="popup__title-box">
 
-                <span data-tab="login-popup" class="nav-tab active">Вход</span>
+                <span data-tab="login-popup" class="nav-tab active">{{ text_popup_tab_login }}</span>
 
-                <span data-tab="register-popup" class="nav-tab">Регистрация</span>
+                <span data-tab="register-popup" class="nav-tab">{{ text_popup_tab_register }}</span>
 
             </div>
 
@@ -236,18 +236,18 @@
                 <form class="popup__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
 
                     <div class="popup__item-box">
-                        <label class="input__title" for="input-email">Номер телефона</label>
-                        <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="input__item" />
+                        <label class="popup__title" for="input-email">{{ text_popup_login_tel_title }}</label>
+                        <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="popup__item" />
                     </div>
 
                     <div class="popup__item-box">
-                        <label class="input__title" for="input-password">Пароль</label>
-                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="input__item" />
+                        <label class="popup__title" for="input-password">{{ text_popup_login_password_title }}</label>
+                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="popup__item" />
                     </div>
 
-                    <input type="submit" value="{{ button_login }}" class="btn btn-primary" />
+                    <button type="submit" value="{{ button_login }}" class="popup__btn">{{ text_popup_login_btn }}</button>
 
-                    <a href="index.php?route=account/forgotten">Забыли пароль?</a>
+                    <a href="index.php?route=account/forgotten" class="login__forgotten-link">{{ text_popup_login_link }}</a>
 
                 </form>
 
