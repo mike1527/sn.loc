@@ -237,11 +237,11 @@
 
                     <div class="popup__item-box">
                         <label class="popup__title" for="input-email">{{ text_popup_login_tel_title }}</label>
-                        <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="popup__item" />
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="popup__item" />
                     </div>
 
                     <div class="popup__item-box">
-                        <label class="popup__title" for="input-password">{{ text_popup_login_password_title }}</label>
+                        <label class="popup__title" for="input-password">{{ text_popup_password_title }}</label>
                         <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="popup__item" />
                     </div>
 
@@ -257,7 +257,37 @@
 
                 <form class="popup__form" enctype="multipart/form-data" method="post" id="formPopup">
 
-                    REGISTER
+                    <div class="popup__item-box">
+                        <label class="popup__title" for="input-email" for="input-telephone">{{ text_popup_login_tel_title }}</label>
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="popup__item" />
+{#                        {% if error_telephone %}#}
+{#                            <div class="text-danger">{{ error_telephone }}</div>#}
+{#                        {% endif %}#}
+                    </div>
+
+                    <div class="popup__item-box">
+                        <label class="popup__title" for="input-email">{{ text_popup_reg_email }}</label>
+                        <input type="email" name="email" placeholder="{{ entry_email }}" id="input-email" class="popup__item" />
+{#                        {% if error_email %}#}
+{#                            <div class="text-danger">{{ error_email }}</div>#}
+{#                        {% endif %}#}
+                    </div>
+
+                    <div class="popup__item-box">
+                        <label class="popup__title" for="input-password">{{ text_popup_password_title }}</label>
+                        <input type="password" name="password" placeholder="{{ entry_password }}" id="input-password" class="popup__item" />
+{#                        {% if error_password %}#}
+{#                            <div class="text-danger">{{ error_password }}</div>#}
+{#                        {% endif %}#}
+                    </div>
+
+                    <button type="submit" value="{{ button_login }}" class="popup__btn">{{ text_popup_login_btn }}</button>
+
+                    <div class="popup__reg-agree">
+                        <input class="input-popup__keep" type="checkbox" name="agree" value="1" checked="checked"/>
+                        <span class="span-popup__keep-style"></span>
+                        {{ text_agree }}&nbsp;<a href="index.php?route=information/terms" class="agree" onclick='window.location.href = "index.php?route=information/terms"'>Пользовательского соглашения</a>!
+                    </div>
 
                 </form>
 

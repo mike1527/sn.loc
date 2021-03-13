@@ -21,9 +21,14 @@ $_['text_contact']                          = 'Связаться с нами';
 $_['text_popup_tab_login']                  = 'Вход';
 $_['text_popup_tab_register']               = 'Регистрация';
 $_['text_popup_login_tel_title']            = 'Номер телефона';
-$_['text_popup_login_password_title']       = 'Пароль';
+$_['text_popup_password_title']             = 'Пароль';
 $_['text_popup_login_btn']                  = 'Войти';
 $_['text_popup_login_link']                 = 'Забыли пароль?';
+$_['entry_tel']                             = 'Введите номер телефона';
+$_['entry_password']                        = 'Введите пароль';
+$_['text_popup_reg_email']                  = 'Электронная почта';
+$_['entry_email']                           = 'Введите электронную почту';
+$_['text_agree']                            = 'Я согласен с условиями';
 
 
 //$_['text_home']             = 'Главная';
