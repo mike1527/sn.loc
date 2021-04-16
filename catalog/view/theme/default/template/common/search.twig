@@ -1,6 +1,9 @@
 <div id="search" class="search__wrapper">
 
-  <input type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" class="form-control input-lg" />
+{#  <input type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" class="form-control input-lg" />#}
+
+  <input type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" id="searchText" class="form-control input-lg">
+  <input type="hidden" name="route" value="product/search" >
 
   <div class="search__btn-box">
 
@@ -15,3 +18,25 @@
   </div>
 
 </div>
+
+<script>
+  $('input[name=\'search\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=common/search/autocomplete&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['link'],
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      location.href = item.value;
+    }
+  });
+</script>

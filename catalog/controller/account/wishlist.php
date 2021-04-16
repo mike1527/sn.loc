@@ -37,10 +37,10 @@ class ControllerAccountWishList extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('account/account', '', true)
-		);
+//		$data['breadcrumbs'][] = array(
+//			'text' => $this->language->get('text_account'),
+//			'href' => $this->url->link('account/account', '', true)
+//		);
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
@@ -90,6 +90,8 @@ class ControllerAccountWishList extends Controller {
 				}
 
 				$data['products'][] = array(
+                    'reviews'    => $product_info['reviews'],
+                    'rating'     => $product_info['rating'],
 					'product_id' => $product_info['product_id'],
 					'thumb'      => $image,
 					'name'       => $product_info['name'],

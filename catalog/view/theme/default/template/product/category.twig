@@ -25,49 +25,79 @@
                 <div id="content" class="{{ class }}">
                     {{ content_top }}
 
-                  <div class="category__title-box">
 
-                    <div class="category__title-inner">
-                      <h3 class="item__main-title">{{ heading_title }}</h3>
-                      <span class="item__main-line"></span>
-                    </div>
-
-                    <div class="category__title-sort">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" class="select-arrow__icon">
-                            <use xlink:href="/img/icon/sprite.svg#selectArrowDown"></use>
-                        </svg>
-
-                      <select id="input-sort" onchange="location = this.value;">
-
-                        {% for sorts in sorts %}
-                          {% if sorts.value == '%s-%s'|format(sort, order) %}
-
-                            <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
-
-                          {% else %}
-
-                            <option value="{{ sorts.href }}">{{ sorts.text }}</option>
-
-                          {% endif %}
-                        {% endfor %}
-
-                      </select>
-                    </div>
-
-
-                  </div>
 
                   {% if products %}
+
+                  <div class="category__title-box">
+
+                          <div class="category__title-inner">
+                              <h3 class="item__main-title">{{ heading_title }}</h3>
+                              <span class="item__main-line"></span>
+                          </div>
+
+                          {#                    <div class="category__title-sort">#}
+
+                          {#                        <svg xmlns="http://www.w3.org/2000/svg" class="select-arrow__icon">#}
+                          {#                            <use xlink:href="/img/icon/sprite.svg#selectArrowDown"></use>#}
+                          {#                        </svg>#}
+
+                          {#                      <select id="input-sort" onchange="location = this.value;">#}
+
+                          {#                        {% for sorts in sorts %}#}
+                          {#                          {% if sorts.value == '%s-%s'|format(sort, order) %}#}
+
+                          {#                            <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>#}
+
+                          {#                          {% else %}#}
+
+                          {#                            <option value="{{ sorts.href }}">{{ sorts.text }}</option>#}
+
+                          {#                          {% endif %}#}
+                          {#                        {% endfor %}#}
+
+                          {#                      </select>#}
+                          {#                        #}
+                          {#                    </div>#}
+
+                          <div class="category__sorting mySelect">
+
+                              <input type="text" id="input-sort" hidden/>
+                              <svg xmlns="http://www.w3.org/2000/svg" class="select-arrow__icon">
+                                  <use xlink:href="/img/icon/sprite.svg#selectArrowDown"></use>
+                              </svg>
+
+                              <div class="select-head__cat">
+                                  <div class="select-title">
+                                      <div class="select-result__cat">
+                                          <span>По умолчанию</span>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="selectContentWrapper">
+                                  <ul name="select-box">
+                                      {% for sorts in sorts %}
+                                          {% if sorts.value == '%s-%s'|format(sort, order) %}
+                                              <script>document.querySelector('.select-result__cat span').innerHTML = '{{ sorts.text }}';</script>
+                                          {% else %}
+                                              <li data-option="{{ sorts.href }}" name="value">{{ sorts.text }}</li>
+                                          {% endif %}
+                                      {% endfor %}
+                                  </ul>
+                              </div>
+                          </div>
+
+                      </div>
 
                   <div class="item__wrapper">
                     {% for product in products %}
 
-                      <div class="item__box">
+                      <div class="item-cat__box">
 
                         <div class="item__img-inner">
                           <a href="{{ product.href }}">
-                            <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                            <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive item__img" />
                           </a>
                         </div>
 
@@ -80,25 +110,25 @@
                                 {% for i in 1..5 %}
                                   {% if product.rating < i %}
                                     <span class="fa-stack rating__star-box">
-                                              <i class="fa-star-o rating__star">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__empty">
-                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
-                                                </svg>
-                                              </i>
-                                          </span>
+                                          <i class="fa-star-o rating__star">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__empty">
+                                                <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                            </svg>
+                                          </i>
+                                      </span>
                                   {% else %}
                                     <span class="fa-stack rating__star-box">
-                                              <i class="fa-star rating__star">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__active">
-                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
-                                                </svg>
-                                              </i>
-                                              <i class="fa-star-o rating__star">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon">
-                                                    <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
-                                                </svg>
-                                              </i>
-                                          </span>
+                                      <i class="fa-star rating__star">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon item-star__active">
+                                            <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                        </svg>
+                                      </i>
+                                      <i class="fa-star-o rating__star">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon">
+                                            <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                        </svg>
+                                      </i>
+                                  </span>
                                   {% endif %}
                                 {% endfor %}
 
@@ -154,7 +184,7 @@
                   {% endif %}
 
                   {% if not categories and not products %}
-                  <p>{{ text_empty }}</p>
+                  <p class="info__text cat__empty-text">{{ text_empty }}</p>
                   <div class="buttons">
             {#        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>#}
                   </div>
@@ -168,6 +198,75 @@
 
 
         </div>
+
+
+{#----------------start style for select option----------------#}
+<script>
+    function mySelect(elClass)
+    {
+        if (document.getElementsByClassName(elClass)[0] === undefined) return false;
+
+        let item, result, content, input;
+
+        document.addEventListener('click', clickDoc);
+
+        function clickDoc(e)
+        {
+            let target = e.target;
+
+            if (content !== undefined) closeSelect();
+            if (!target.classList.contains('select-head__cat')) return false;
+
+            item = target.parentElement;
+            result = target.getElementsByClassName('select-result__cat')[0];
+            content = item.getElementsByClassName('selectContentWrapper')[0];
+            input = item.getElementsByTagName('input')[0];
+
+            (content.clientHeight === 0) ? openSelect() : closeSelect();
+
+            function openSelect()
+            {
+                item.classList.add('open');
+                let height = (content.firstElementChild.clientHeight > 212) ? 256 : content.firstElementChild.clientHeight;
+                content.style.height = height + 'px';
+            }
+
+            function closeSelect()
+            {
+                choiceItem();
+                content.style.height = 0 + 'px';
+                item.classList.remove('open');
+            }
+
+            function choiceItem()
+            {
+                if (!target.hasAttribute('data-option')) return false;
+
+                setActive(target);
+
+                result.innerHTML = target.innerHTML;
+                input.value = target.getAttribute('data-option');
+
+                let eventClick = document.createEvent('Event');
+                eventClick.initEvent("selectChange", true, true);
+                eventClick.eventName = "selectChange";
+                input.dispatchEvent(eventClick);
+            }
+
+            function setActive(target)
+            {
+                content.querySelector('li.active')?.classList.remove('active');
+                target.classList.add('active');
+            }
+        }
+    }
+
+    mySelect('select-head__cat');
+
+</script>
+{#----------------end style for select option----------------#}
+
+
 
             {{ footer }}
 

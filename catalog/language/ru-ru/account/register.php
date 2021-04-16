@@ -4,16 +4,16 @@
 
 // Heading
 $_['heading_title']        = 'Регистрация';
+$_['heading_title_text']        = 'Регистрация';
 
 // Text
 $_['text_account']         = 'Аккаунт';
-$_['text_register']        = 'Регистрация';
 $_['text_account_already'] = 'Если Вы уже зарегистрированы, перейдите на страницу <a href="%s">входа в систему</a>.';
 $_['text_your_details']    = 'Контактные данные';
 $_['text_your_address']    = 'Ваш Адрес';
 $_['text_newsletter']      = 'Рассылка новостей';
 $_['text_your_password']   = 'Ваш пароль';
-$_['text_agree']           = 'Я прочитал и согласен с условиями <a href="%s" class="agree"><b>%s</b></a>';
+$_['text_agree']           = 'Я согласен с условиями <a href="%s" class="agree"><b>%s</b></a>';
 
 // Entry
 $_['entry_customer_group'] = 'Группа покупателей';
@@ -48,3 +48,4 @@ $_['error_custom_field']   = '%s необходим!';
 $_['error_password']       = 'Пароль должен содержать от 4 до 20 символов!';
 $_['error_confirm']        = 'Пароли не совпадают!';
 $_['error_agree']          = 'Вы должны прочитать и согласится с %s!';
+$_['error_agree_1']        = 'Вы должны прочитать и согласиться с Пользовательским соглашением';

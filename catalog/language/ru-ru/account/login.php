@@ -4,6 +4,7 @@
 
 // Heading
 $_['heading_title']                = 'Авторизация';
+$_['heading_title_text']           = 'Логин';
 
 // Text
 $_['text_account']                 = 'Аккаунт';

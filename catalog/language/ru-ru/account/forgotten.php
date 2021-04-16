@@ -3,10 +3,11 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 // Heading
-$_['heading_title']   = 'Забыли пароль?';
+$_['heading_title_text']   = 'Восстановление пароля';
+$_['heading_title']   = 'Восстановление пароля';
 
 // Text
-$_['text_account']    = 'Личный кабинет';
+$_['text_account']    = 'Личные данные';
 $_['text_forgotten']  = 'Забыли пароль?';
 $_['text_your_email'] = 'Ваш E-Mail';
 $_['text_email']      = 'Введите адрес электронной почты Вашей учетной записи. Нажмите кнопку продолжить, чтобы получить пароль по электронной почте.';

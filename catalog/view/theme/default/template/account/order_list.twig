@@ -1,10 +1,18 @@
 {{ header }}
 <div id="account-order" class="container">
+
   <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% for key, breadcrumb in breadcrumbs %}
+      {% if key + 1 < breadcrumbs|length %}
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        </li>
+      {% else %}
+        <li class="breadcrumb__item breadcrumb__item-active">{{ heading_title_text }}</li>
+      {% endif %}
     {% endfor %}
   </ul>
+
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -13,48 +21,65 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
+    <div id="content">{{ content_top }}
+
+
+      <h3 class="item__main-title">{{ heading_title_text }}</h3>
+      <span class="item__main-line"></span>
+
+
       {% if orders %}
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-          <thead>
+        <div class="">
+          <table class="table table__account">
+            <thead>
             <tr>
-              <td class="text-right">{{ column_order_id }}</td>
-              <td class="text-left">{{ column_customer }}</td>
-              <td class="text-right">{{ column_product }}</td>
-              <td class="text-left">{{ column_status }}</td>
-              <td class="text-right">{{ column_total }}</td>
-              <td class="text-left">{{ column_date_added }}</td>
-              <td></td>
+              <td class="account__content-title">{{ column_photo }}</td>
+              <td class="account__content-title">{{ column_name }}</td>
+              <td class="account__content-title">{{ column_date_added }}</td>
+              <td class="account__content-title">{{ column_date_delivery }}</td>
+              <td class="account__content-title">{{ column_product }}</td>
+              <td class="account__content-title">{{ column_price }}</td>
             </tr>
-          </thead>
-          <tbody>
-           {% for order in orders %}
-            <tr>
-              <td class="text-right">#{{ order.order_id }}</td>
-              <td class="text-left">{{ order.name }}</td>
-              <td class="text-right">{{ order.products }}</td>
-              <td class="text-left">{{ order.status }}</td>
-              <td class="text-right">{{ order.total }}</td>
-              <td class="text-left">{{ order.date_added }}</td>
-              <td class="text-right"><a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
-            </tr>
+            </thead>
+
+            <tbody class="account__content-items">
+            {% for order in orders %}
+
+              <tr>
+                <td class="account__content" aria-label="{{ column_photo }}">
+                  <div class="account__content-img">
+                    <img src="image/catalog/account/order-item.jpg" alt="" title=""/>
+                  </div>
+                </td>
+                <td class="account__content account__content-name" aria-label="{{ column_name }}">
+                  <a class="cart__tbody-link" href="{{ product.href }}">{{ product.name }}</a>
+                </td>
+                <td class="account__content" aria-label="{{ column_date_added }}">{{ order.date_added }}</td>
+                <td class="account__content" aria-label="{{ column_date_delivery }}">{{ order.date_added }}</td>
+                <td class="account__content" aria-label="{{ column_product }}">{{ order.products }}</td>
+                <td class="account__content" aria-label="{{ column_price }}">{{ order.total }}</td>
+              </tr>
+
             {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 text-left">{{ pagination }}</div>
-        <div class="col-sm-6 text-right">{{ results }}</div>
-      </div>
+            </tbody>
+
+          </table>
+        </div>
+{#      <div class="row">#}
+{#        <div class="col-sm-6 text-left">{{ pagination }}</div>#}
+{#        <div class="col-sm-6 text-right">{{ results }}</div>#}
+{#      </div>#}
       {% else %}
       <p>{{ text_empty }}</p>
       {% endif %}
-      <div class="buttons clearfix">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
-      </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+{#      <div class="buttons clearfix">#}
+{#        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>#}
+{#      </div>#}
+{#      {{ content_bottom }}#}
+    </div>
+{#    {{ column_right }}#}
+
+  </div>
+</div>
 </div>
 {{ footer }}

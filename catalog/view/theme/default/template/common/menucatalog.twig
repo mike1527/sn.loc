@@ -1,29 +1,29 @@
-                        {% if categories %}
-                        <nav id="menucatalog" class="navbar">
+    {% if categories %}
+    <nav id="menucatalog" class="navbar">
 
-                            <form class="menucatalog__form" action="#">
+        <form class="menucatalog__form" action="#">
 
-                                <select class="menucatalog__dropdown">
+            <select class="menucatalog__dropdown">
 
-                                    <option selected="selected">{{ text_menucatalog }}</option>
-                                    {% for category in categories %} {% if category.children %}
+                <option selected="selected">{{ text_menucatalog }}</option>
+                {% for category in categories %} {% if category.children %}
 
-                                    <option value="{{ category.href }}">{{ category.name }}</option>
+                <option value="{{ category.href }}">{{ category.name }}</option>
 
-                                    {% else %}
+                {% else %}
 
-                                    <option value="{{ category.href }}">{{ category.name }}</option>
+                <option value="{{ category.href }}">{{ category.name }}</option>
 
-                                    {% endif %}
-                                    {% endfor %}
+                {% endif %}
+                {% endfor %}
 
-                                </select>
+            </select>
 
-                            </form>
+        </form>
 
-                        </nav>
+    </nav>
 
-                        {% endif %}
+    {% endif %}
 
 <script>
     function tamingselect()
@@ -140,6 +140,7 @@
     }
 
 </script>
+
 
 
 

@@ -1,15 +1,27 @@
 {{ header }}
 <div id="account-login" class="container">
+
   <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% for key, breadcrumb in breadcrumbs %}
+      {% if key + 1 < breadcrumbs|length %}
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        </li>
+      {% else %}
+        <li class="breadcrumb__item breadcrumb__item-active">{{ heading_title_text }}</li>
+      {% endif %}
     {% endfor %}
   </ul>
+
   {% if success %}
-  <div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+  <div class="alert alert-success alert-dismissible">{{ success }}
+    <button type="button" class="close" data-dismiss="alert">×</button>
+  </div>
   {% endif %}
   {% if error_warning %}
-  <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+  <div class="alert alert-danger alert-dismissible">{{ error_warning }}
+    <button type="button" class="close" data-dismiss="alert">×</button>
+  </div>
   {% endif %}
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
@@ -19,37 +31,39 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="well">
-            <h2>{{ text_new_customer }}</h2>
-            <p><strong>{{ text_register }}</strong></p>
-            <p>{{ text_register_account }}</p>
-            <a href="{{ register }}" class="btn btn-primary">{{ button_continue }}</a></div>
-        </div>
-        <div class="col-sm-6">
-          <div class="well">
-            <h2>{{ text_returning_customer }}</h2>
-            <p><strong>{{ text_i_am_returning_customer }}</strong></p>
-            <form action="{{ action }}" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label class="control-label" for="input-email">{{ entry_email }}</label>
-                <input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control" />
+    <div id="content">
+      {{ content_top }}
+
+      <h3 class="item__main-title">{{ heading_title_text }}</h3>
+      <span class="item__main-line"></span>
+
+            <form class="login__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
+
+              <div class="login__item-box login__item-inner">
+                <label class="login__title" for="input-email">{{ text_popup_login_tel_title }}</label>
+                <input type="email" name="email" placeholder="{{ entry_tel }}" id="input-email" class="login__item" />
               </div>
-              <div class="form-group">
-                <label class="control-label" for="input-password">{{ entry_password }}</label>
-                <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control" />
-                <a href="{{ forgotten }}">{{ text_forgotten }}</a></div>
-              <input type="submit" value="{{ button_login }}" class="btn btn-primary" />
-              {% if redirect %}
-              <input type="hidden" name="redirect" value="{{ redirect }}" />
-              {% endif %}
+
+              <div class="login__item-box login__item-inner">
+                <label class="login__title" for="input-password">{{ text_popup_password_title }}</label>
+                <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="login__item" />
+              </div>
+
+              <div class="login__btn-wrapper">
+                <button type="submit" value="{{ button_login }}" class="login__btn login__btn-box">{{ text_popup_login_btn }}</button>
+
+                <div class="login__bottom-links">
+                  <a href="index.php?route=account/forgotten" class="item__link login__forgotten-link">{{ text_popup_login_link }}</a>
+                  <a href="{{ register }}" class="item__link login__register-link">{{ text_register }}</a>
+                </div>
+              </div>
+
             </form>
-          </div>
-        </div>
-      </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+
+      {{ content_bottom }}
+    </div>
+{#    {{ column_right }}#}
+  </div>
+</div>
 </div>
 {{ footer }}

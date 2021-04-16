@@ -5,13 +5,15 @@
 // Heading
 $_['heading_title']     = 'Поиск';
 $_['heading_tag']		= 'По тегу - ';
+$_['heading_title_searchtext']		= 'Поиск';
+$_['heading_title_searchtext']		= 'Поиск';
 
 // Text
 $_['text_search']       = 'Товары, соответствующие критериям поиска';
 $_['text_keyword']      = 'Ключевые слова';
 $_['text_category']     = 'Все категории';
 $_['text_sub_category'] = 'Поиск в подкатегориях';
-$_['text_empty']        = 'Нет товаров, которые соответствуют критериям поиска.';
+$_['text_empty_search']        = 'Нет товаров, которые соответствуют критериям поиска.';
 $_['text_quantity']     = 'Кол-во:';
 $_['text_manufacturer'] = 'Производитель:';
 $_['text_model']        = 'Код Товара:';
@@ -32,6 +34,8 @@ $_['text_model_asc']    = 'Код Товара (А - Я)';
 $_['text_model_desc']   = 'Код Товара (Я - А)';
 $_['text_limit']        = 'Показать:';
 $_['text_benefits']     = 'Преимущества:';
+$_['heading_title_text']    = 'Избранное';
+$_['heading_item_link']    = 'Просмотреть товар';
 
 // Entry
 $_['entry_search']      = 'Поиск';

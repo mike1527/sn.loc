@@ -30,8 +30,8 @@
 {% endif %}
 <meta property="og:site_name" content="{{ name }}" />
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
 <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link href="catalog/view/javascript/jquery/magnific/magnific-popup.css" type="text/css" rel="stylesheet" media="screen" />
@@ -71,53 +71,49 @@
 
                         <div class="header__account">
 
-                            <ul class="header__account-list">
+                                <ul>
+                                    <li id="accountLink" class="btn">
 
-                                <li class="dropdown">
-
-{#                                    <a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle header__account-link" data-toggle="dropdown">#}
-                                    <a href="#form-popup" class="dropdown-toggle header__account-link popup-with-form">
-{#                                        <p class="footer__item-text service-text">#}
-{#                                            <a href="#form-popup" class="footer__item-text-link popup-with-form">Добро позаловать</a>#}
-{#                                        </p>#}
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="welcome-user__icon">
-                                            <use xlink:href="/img/icon/sprite.svg#userIcon"></use>
-                                        </svg>
-
-                                        <span class="header__account-text">{{ text_welcome }}</span>
-
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="welcome-arrow__icon">
-                                            <use xlink:href="/img/icon/sprite.svg#arrowDown"></use>
-                                        </svg>
-
-                                    </a>
-
-                                    <ul class="dropdown-menu dropdown-menu-right">
-
-                                        {% if logged %}
-
-                                            <li><a href="{{ account }}">{{ text_account }}</a></li>
-
-                                            <li><a href="{{ order }}">{{ text_order }}</a></li>
-
-                                            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-
-                                            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
-
+                                        {% if (logged) %}
+                                            <a href="{{ account }}" title="{{ FirstName }}" onclick="return false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="welcome-user__icon">
+                                                    <use xlink:href="/img/icon/sprite.svg#userIcon"></use>
+                                                </svg>
+                                                <span>{{ FirstName }}</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="welcome-arrow__icon">
+                                                    <use xlink:href="/img/icon/sprite.svg#arrowDown"></use>
+                                                </svg>
+                                            </a>
                                         {% else %}
-
-                                            <li><a href="{{ register }}">{{ text_register }}</a></li>
-
-                                            <li><a href="{{ login }}">{{ text_login }}</a></li>
-
+                                            <a href="#form-popup" class="popup-with-form">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="welcome-user__icon">
+                                                    <use xlink:href="/img/icon/sprite.svg#userIcon"></use>
+                                                </svg>
+                                                Добро пожаловать
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="welcome-arrow__icon">
+                                                    <use xlink:href="/img/icon/sprite.svg#arrowDown"></use>
+                                                </svg>
+                                            </a>
                                         {% endif %}
 
-                                    </ul>
+                                        <ul class="dropdown-menu">
+                                            {% if logged %}
+                                                <li><a href="index.php?route=account/edit">{{ text_account }}</a></li>
+                                                <li><a href="index.php?route=account/order">{{ text_order }}</a></li>
+                                                <li><a href="{{ logout }}">{{ text_logout }}</a></li>
+                                            {% else %}
 
-                                </li>
+                                            {% endif %}
+                                        </ul>
 
-                            </ul>
+                                    </li>
+                                </ul>
+
+                            <script>
+                                document.getElementById('accountLink').onclick = function() {
+                                    document.getElementById('accountLink').classList.toggle('open');
+                                }
+                            </script>
 
                         </div>
 
@@ -158,21 +154,21 @@
 
                         <div class="header__items">
 
-                            <a class="header__item" href="{{ checkout }}" title="{{ text_checkout }}">
+                            <a class="header__item item__link" href="{{ checkout }}" title="{{ text_checkout }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="order-box__icon">
                                     <use xlink:href="/img/icon/sprite.svg#orderBox"></use>
                                 </svg>
                                 {{ text_checkout }}
                             </a>
 
-                            <a class="header__item" href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}">
+                            <a class="header__item item__link" href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="heart__icon">
                                     <use xlink:href="/img/icon/sprite.svg#heart"></use>
                                 </svg>
                                 {{ text_wishlist }}
                             </a>
 
-                            <a class="header__item" href="{{ shopping_cart }}" title="{{ text_shopping_cart }}">
+                            <a class="header__item item__link" href="{{ shopping_cart }}" title="{{ text_shopping_cart }}">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="cart__icon">
                                     <use xlink:href="/img/icon/sprite.svg#cart"></use>
                                 </svg>
@@ -205,12 +201,47 @@
 
                     </div>
 
-                    <div class="header__information">
-                        <a href="index.php?route=information/about" class="header__information-link">{{ text_about_us }}</a>
-                        <a href="index.php?route=checkout/checkout" class="header__information-link">{{ text_arrange_order }}</a>
-                        <a href="index.php?route=information/paymentmetod" class="header__information-link">{{ text_payment_method }}</a>
-                        <a href="index.php?route=information/deliveryinfo" class="header__information-link">{{ text_delivery_method }}</a>
-                        <a href="index.php?route=information/contact" class="header__information-link">{{ text_contact }}</a>
+                    <div class="header__information-box">
+
+                        <div class="header__items-mobile">
+
+                            <a class="header__item item__link" href="{{ checkout }}" title="{{ text_checkout }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="order-box__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#orderBox"></use>
+                                </svg>
+                                {{ text_checkout }}
+                            </a>
+
+                            <a class="header__item item__link" href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="heart__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#heart"></use>
+                                </svg>
+                                {{ text_wishlist }}
+                            </a>
+
+                            <a class="header__item item__link" href="{{ shopping_cart }}" title="{{ text_shopping_cart }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cart__icon">
+                                    <use xlink:href="/img/icon/sprite.svg#cart"></use>
+                                </svg>
+                                {{ text_shopping_cart }}
+                            </a>
+
+                        </div>
+
+                        <div id="headerInfo" class="header__information">
+                            <a href="index.php?route=information/about" class="header__information-link">{{ text_about_us }}</a>
+                            <a href="index.php?route=checkout/checkout" class="header__information-link">{{ text_arrange_order }}</a>
+                            <a href="index.php?route=information/paymentmetod" class="header__information-link">{{ text_payment_method }}</a>
+                            <a href="index.php?route=information/deliveryinfo" class="header__information-link">{{ text_delivery_method }}</a>
+                            <a href="index.php?route=information/contact" class="header__information-link">{{ text_contact }}</a>
+                        </div>
+
+                        <div id="headerBtn" class="header__information-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="burger__icon">
+                                <use xlink:href="/img/icon/sprite.svg#CategoryBurger"></use>
+                            </svg>
+                        </div>
+
                     </div>
 
                 </div>
@@ -223,7 +254,7 @@
 
         <div id="form-popup" class="popup-box mfp-hide">
 
-            <div class="popup__title-box">
+            <div class="login__title-box">
 
                 <span data-tab="login-popup" class="nav-tab active">{{ text_popup_tab_login }}</span>
 
@@ -233,21 +264,21 @@
 
             <div id="login-popup" class="tab active">
 
-                <form class="popup__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
+                <form class="login__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
 
-                    <div class="popup__item-box">
-                        <label class="popup__title" for="input-email">{{ text_popup_login_tel_title }}</label>
-                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="popup__item" />
+                    <div class="login__item-box">
+                        <label class="login__title" for="input-email">{{ text_popup_login_tel_title }}</label>
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="login__item" />
                     </div>
 
-                    <div class="popup__item-box">
-                        <label class="popup__title" for="input-password">{{ text_popup_password_title }}</label>
-                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="popup__item" />
+                    <div class="login__item-box">
+                        <label class="login__title" for="input-password">{{ text_popup_password_title }}</label>
+                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="login__item" />
                     </div>
 
-                    <button type="submit" value="{{ button_login }}" class="popup__btn">{{ text_popup_login_btn }}</button>
+                    <button type="submit" value="{{ button_login }}" class="login__btn">{{ text_popup_login_btn }}</button>
 
-                    <a href="index.php?route=account/forgotten" class="login__forgotten-link">{{ text_popup_login_link }}</a>
+                    <a href="index.php?route=account/forgotten" class="item__link">{{ text_popup_login_link }}</a>
 
                 </form>
 
@@ -255,38 +286,39 @@
 
             <div id="register-popup" class="tab">
 
-                <form class="popup__form" enctype="multipart/form-data" method="post" id="formPopup">
+                <form class="login__form" enctype="multipart/form-data" method="post" id="formPopup">
 
-                    <div class="popup__item-box">
-                        <label class="popup__title" for="input-email" for="input-telephone">{{ text_popup_login_tel_title }}</label>
-                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="popup__item" />
+                    <div class="login__item-box">
+                        <label class="login__title" for="input-telephone">{{ text_popup_login_tel_title }}</label>
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="login__item" />
 {#                        {% if error_telephone %}#}
 {#                            <div class="text-danger">{{ error_telephone }}</div>#}
 {#                        {% endif %}#}
                     </div>
 
-                    <div class="popup__item-box">
-                        <label class="popup__title" for="input-email">{{ text_popup_reg_email }}</label>
-                        <input type="email" name="email" placeholder="{{ entry_email }}" id="input-email" class="popup__item" />
+                    <div class="login__item-box">
+                        <label class="login__title" for="input-email">{{ text_popup_reg_email }}</label>
+                        <input type="email" name="email" placeholder="{{ entry_email }}" id="input-email" class="login__item" />
 {#                        {% if error_email %}#}
 {#                            <div class="text-danger">{{ error_email }}</div>#}
 {#                        {% endif %}#}
                     </div>
 
-                    <div class="popup__item-box">
-                        <label class="popup__title" for="input-password">{{ text_popup_password_title }}</label>
-                        <input type="password" name="password" placeholder="{{ entry_password }}" id="input-password" class="popup__item" />
+                    <div class="login__item-box">
+                        <label class="login__title" for="input-password">{{ text_popup_password_title }}</label>
+                        <input type="password" name="password" placeholder="{{ entry_password }}" id="input-password" class="login__item" />
 {#                        {% if error_password %}#}
 {#                            <div class="text-danger">{{ error_password }}</div>#}
 {#                        {% endif %}#}
                     </div>
 
-                    <button type="submit" value="{{ button_login }}" class="popup__btn">{{ text_popup_login_btn }}</button>
+                    <button type="submit" value="{{ button_login }}" class="login__btn">{{ text_popup_login_btn }}</button>
 
                     <div class="popup__reg-agree">
                         <input class="input-popup__keep" type="checkbox" name="agree" value="1" checked="checked"/>
-                        <span class="span-popup__keep-style"></span>
-                        {{ text_agree }}&nbsp;<a href="index.php?route=information/terms" class="agree" onclick='window.location.href = "index.php?route=information/terms"'>Пользовательского соглашения</a>!
+                        <span class="span-reg__keep-style"></span>
+                        {{ text_agree }}&nbsp;
+                        <a href="index.php?route=information/terms" class="agree" onclick='window.location.href = "index.php?route=information/terms"'>Пользовательского соглашения</a>!
                     </div>
 
                 </form>
@@ -346,7 +378,7 @@
 
 <script>
     const btnMenu = document.getElementById('catalog');
-    const menu = document.getElementById('menu');
+    const menu = document.getElementById('catalogBox');
     const toggleMenu = function() {
         menu.classList.toggle('cat-open');
     }
@@ -366,4 +398,30 @@
             toggleMenu();
         }
     });
+</script>
+
+<script>
+
+    const btnInfoMenu = document.getElementById('headerBtn');
+    const menuInfo = document.getElementById('headerInfo');
+    const toggleMenuInfo = function() {
+        menuInfo.classList.toggle('info-open');
+    }
+
+    btnInfoMenu.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenuInfo();
+    });
+
+    document.addEventListener('click', function(e) {
+        const targetInfo = e.target;
+        const its_menuInfo = targetInfo == menuInfo || menuInfo.contains(targetInfo);
+        const its_btnMenuInfo = targetInfo == btnInfoMenu;
+        const menu_is_activeInfo = menuInfo.classList.contains('info-open');
+
+        if (!its_menuInfo && !its_btnMenuInfo && menu_is_activeInfo) {
+            toggleMenuInfo();
+        }
+    });
+
 </script>

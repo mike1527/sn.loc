@@ -157,8 +157,7 @@ class ControllerCheckoutCart extends Controller {
 				);
 			}
 
-
-			// Gift Voucher
+            // Gift Voucher
 			$data['vouchers'] = array();
 
 			if (!empty($this->session->data['vouchers'])) {

@@ -1,10 +1,19 @@
 {{ header }}
+
 <div id="common-success" class="container">
+
   <ul class="breadcrumb">
-    {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% for key, breadcrumb in breadcrumbs %}
+      {% if key + 1 < breadcrumbs|length %}
+        <li class="breadcrumb__item">
+          <a class="breadcrumb__link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        </li>
+      {% else %}
+        <li class="breadcrumb__item breadcrumb__item-active">{{ heading_title_text }}</li>
+      {% endif %}
     {% endfor %}
   </ul>
+
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -13,13 +22,29 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
+    <div id="content">
+      {{ content_top }}
+      <h3 class="item__main-title">{{ heading_title }}</h3>
+      <span class="item__main-line"></span>
+
       {{ text_message }}
-      <div class="buttons">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
-      </div>
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+
+        <div class="item__btn-box">
+            <a href="{{ continue }}" class="form__btn" type="submit">{{ button_continue_home }}</a>
+        </div>
+
+{#      <div class="buttons">#}
+{#        <div class="pull-right">#}
+{#          <a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a>#}
+{#        </div>#}
+{#      </div>#}
+
+{#      {{ content_bottom }}#}
+    </div>
+{#    {{ column_right }}#}
+  </div>
+</div>
+
+
 </div>
 {{ footer }}

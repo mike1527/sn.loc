@@ -3,7 +3,8 @@
 // *	@license	GNU General Public License version 3; see LICENSE.txt
 
 class ControllerAccountOrder extends Controller {
-	public function index() {
+
+    public function index() {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
 
@@ -14,13 +15,13 @@ class ControllerAccountOrder extends Controller {
 
 		$this->document->setTitle($this->language->get('heading_title'));
 		$this->document->setRobots('noindex,follow');
-		
+
 		$url = '';
 
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
-		
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -30,9 +31,9 @@ class ControllerAccountOrder extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_account'),
-			'href' => $this->url->link('account/account', '', true)
+			'href' => $this->url->link('account/edit', '', true)
 		);
-		
+
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/order', $url, true)
@@ -56,7 +57,13 @@ class ControllerAccountOrder extends Controller {
 			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
 			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
 
+            echo "<pre>";
+            print_r($result);
+//            die();
+
+
 			$data['orders'][] = array(
+//                'thumb'     => $image,
 				'order_id'   => $result['order_id'],
 				'name'       => $result['firstname'] . ' ' . $result['lastname'],
 				'status'     => $result['status'],
@@ -66,6 +73,7 @@ class ControllerAccountOrder extends Controller {
 				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
 			);
 		}
+
 
 		$pagination = new Pagination();
 		$pagination->total = $order_total;
@@ -277,7 +285,8 @@ class ControllerAccountOrder extends Controller {
 				}
 
 				$data['products'][] = array(
-					'name'     => $product['name'],
+
+                    'name'      => $product['name'],
 					'model'    => $product['model'],
 					'option'   => $option_data,
 					'quantity' => $product['quantity'],
@@ -286,7 +295,9 @@ class ControllerAccountOrder extends Controller {
 					'reorder'  => $reorder,
 					'return'   => $this->url->link('account/return/add', 'order_id=' . $order_info['order_id'] . '&product_id=' . $product['product_id'], true)
 				);
+
 			}
+
 
 			// Voucher
 			$data['vouchers'] = array();
@@ -402,4 +413,5 @@ class ControllerAccountOrder extends Controller {
 
 		$this->response->redirect($this->url->link('account/order/info', 'order_id=' . $order_id));
 	}
+
 }

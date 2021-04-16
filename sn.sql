@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 10 2021 г., 11:18
+-- Время создания: Апр 15 2021 г., 05:43
 -- Версия сервера: 10.3.22-MariaDB
 -- Версия PHP: 7.3.17
 
@@ -83,6 +83,13 @@ CREATE TABLE `oc_api_ip` (
   `ip` varchar(40) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Дамп данных таблицы `oc_api_ip`
+--
+
+INSERT INTO `oc_api_ip` (`api_ip_id`, `api_id`, `ip`) VALUES
+(1, 1, '127.0.0.1');
+
 -- --------------------------------------------------------
 
 --
@@ -97,6 +104,13 @@ CREATE TABLE `oc_api_session` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `oc_api_session`
+--
+
+INSERT INTO `oc_api_session` (`api_session_id`, `api_id`, `session_id`, `ip`, `date_added`, `date_modified`) VALUES
+(1, 1, '518dfc3fc0657570769bcc8eae', '127.0.0.1', '2021-04-05 23:23:50', '2021-04-05 23:23:50');
 
 -- --------------------------------------------------------
 
@@ -1462,7 +1476,7 @@ INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbo
 (1, 'Рубль', 'RUB', '', 'р.', '2', 0.00450000, 1, '2021-02-21 12:42:47'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.01697793, 1, '2017-07-19 21:28:21'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.01476363, 1, '2017-07-19 21:28:21'),
-(5, 'Манат', 'TMT', '', '', '2', 1.00000000, 1, '2021-03-06 21:07:08');
+(5, 'Манат', 'TMT', '', '', '2', 1.00000000, 1, '2021-04-12 12:28:16');
 
 -- --------------------------------------------------------
 
@@ -1500,7 +1514,8 @@ CREATE TABLE `oc_customer` (
 --
 
 INSERT INTO `oc_customer` (`customer_id`, `customer_group_id`, `store_id`, `language_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `safe`, `token`, `code`, `date_added`) VALUES
-(1, 1, 0, 1, 'Mihail', 'Yurkevich', 'mihailyur1527@gmail.com', '866504012', '', 'de077b3b76bbf798e9a418b2c9ad81142f66e086', 'LcStkN0ZD', NULL, NULL, 0, 1, '[]', '127.0.0.1', 1, 0, '', '', '2021-02-21 03:54:10');
+(1, 1, 0, 1, 'Mihail', 'Yurkevich', 'mihailyur1527@gmail.com', '866504012', '', 'de077b3b76bbf798e9a418b2c9ad81142f66e086', 'LcStkN0ZD', NULL, NULL, 0, 1, '', '127.0.0.1', 1, 0, '', 'hBO6CD5r95fSNHJ33CYaem4nv2XiA2PJfq88sBfK', '2021-02-21 03:54:10'),
+(11, 1, 0, 1, 'fasdfasdf', '', 'mihailyfsdaur1527@gmail.com', '866504012', '', '0e6ad62232ebb54805d9bf2fdd8237a5733c3750', 'aV51gv8qE', NULL, NULL, 0, 0, '', '127.0.0.1', 1, 0, '', '', '2021-04-11 19:48:19');
 
 -- --------------------------------------------------------
 
@@ -1626,7 +1641,8 @@ CREATE TABLE `oc_customer_ip` (
 --
 
 INSERT INTO `oc_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
-(1, 1, '127.0.0.1', '2021-02-21 03:55:03');
+(1, 1, '127.0.0.1', '2021-02-21 03:55:03'),
+(11, 11, '127.0.0.1', '2021-04-11 19:48:21');
 
 -- --------------------------------------------------------
 
@@ -1642,6 +1658,13 @@ CREATE TABLE `oc_customer_login` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `oc_customer_login`
+--
+
+INSERT INTO `oc_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `date_added`, `date_modified`) VALUES
+(1, '', '127.0.0.1', 9, '2021-03-13 04:45:57', '2021-04-12 06:41:17');
 
 -- --------------------------------------------------------
 
@@ -1724,7 +1747,9 @@ CREATE TABLE `oc_customer_wishlist` (
 --
 
 INSERT INTO `oc_customer_wishlist` (`customer_id`, `product_id`, `date_added`) VALUES
-(1, 42, '2021-02-21 11:48:35');
+(1, 32, '2021-04-07 03:47:03'),
+(1, 48, '2021-04-07 04:01:52'),
+(1, 75, '2021-04-12 17:23:09');
 
 -- --------------------------------------------------------
 
@@ -2133,12 +2158,11 @@ CREATE TABLE `oc_information_description` (
 
 INSERT INTO `oc_information_description` (`information_id`, `language_id`, `title`, `description`, `meta_title`, `meta_description`, `meta_keyword`, `meta_h1`) VALUES
 (4, 1, 'О нас', '&lt;p&gt;О нас&lt;br&gt;&lt;/p&gt;\r\n', '', '', '', ''),
-(5, 1, 'Условия соглашения', '&lt;p&gt;\r\n	Условия соглашения&lt;/p&gt;\r\n', '', '', '', ''),
 (3, 1, 'Политика безопасности', '&lt;p&gt;\r\n	Политика безопасности&lt;/p&gt;\r\n', '', '', '', ''),
 (6, 1, 'Информация о доставке', '&lt;p&gt;\r\n	Информация о доставке&lt;/p&gt;\r\n', '', '', '', ''),
 (4, 2, 'About Us', '&lt;p&gt;About Us&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
 (6, 2, 'Delivery Information', '&lt;p&gt;Delivery Information&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
-(5, 2, 'Terms &amp; Conditions', '&lt;p&gt;Terms &amp;amp; Conditions&lt;br&gt;&lt;/p&gt;', '', '', '', ''),
+(5, 1, 'Пользовательского соглашения', '&lt;p&gt;Текст для пользовательского соглашения&lt;/p&gt;\r\n', '', '', '', ''),
 (3, 2, 'Privacy Policy', '&lt;p&gt;Privacy Policy&lt;br&gt;&lt;/p&gt;', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -2152,6 +2176,13 @@ CREATE TABLE `oc_information_to_layout` (
   `store_id` int(11) NOT NULL,
   `layout_id` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `oc_information_to_layout`
+--
+
+INSERT INTO `oc_information_to_layout` (`information_id`, `store_id`, `layout_id`) VALUES
+(5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2256,7 +2287,6 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'account', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
-(113, 1, 'html.38', 'content_top', 2),
 (74, 14, 'blog_category', 'column_left', 0),
 (75, 14, 'blog_featured.33', 'column_left', 1),
 (76, 14, 'blog_latest.32', 'content_bottom', 0),
@@ -2270,8 +2300,8 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (86, 17, 'featured_article.34', 'column_left', 0),
 (87, 17, 'featured_product.35', 'column_left', 1),
 (88, 2, 'featured_article.34', 'content_bottom', 0),
-(112, 1, 'bestseller.36', 'content_top', 1),
-(111, 1, 'slideshow.27', 'content_top', 0);
+(123, 1, 'slideshow.27', 'content_top', 0),
+(124, 1, 'bestseller.36', 'content_top', 1);
 
 -- --------------------------------------------------------
 
@@ -2294,7 +2324,7 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (78, 3, 0, 'product/category'),
-(74, 1, 0, 'common/home'),
+(82, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -3033,21 +3063,21 @@ CREATE TABLE `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 938, 7, 'catalog/demo/htc_touch_hd_1.jpg', 5, 1, '100.0000', 200, 9, '2009-02-03', '146.40000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2011-09-30 01:05:39', 1),
 (29, 'Product 2', '', '', '', '', '', '', '', 998, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, '279.9900', 0, 9, '2009-02-03', '133.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08', 1),
-(30, 'Product 3', '', '', '', '', '', '', '', 6, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 2, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 1),
+(30, 'Product 3', '', '', '', '', '', '', '', 6, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 6, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 1),
 (31, 'Product 4', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/nikon_d300_1.jpg', 0, 1, '80.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2011-09-30 01:06:00', 1),
-(32, 'Product 5', '', '', '', '', '', '', '', 998, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 1),
-(33, 'Product 6', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, '300.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 17:08:31', '2021-02-21 12:26:42', 1),
-(34, 'Product 7', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/ipod_shuffle_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 2, '2009-02-03 18:07:54', '2011-09-30 01:07:17', 1),
+(32, 'Product 5', '', '', '', '', '', '', '', 998, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 6, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 1),
+(33, 'Product 6', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, '300.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 1, '2009-02-03 17:08:31', '2021-02-21 12:26:42', 1),
+(34, 'Product 7', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/ipod_shuffle_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 4, '2009-02-03 18:07:54', '2011-09-30 01:07:17', 1),
 (35, 'Product 8', '', '', '', '', '', '', '', 1000, 5, '', 0, 0, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 18:08:31', '2011-09-30 01:06:17', 1),
 (36, 'Product 9', '', '', '', '', '', '', '', 993, 6, 'catalog/demo/ipod_nano_1.jpg', 8, 0, '100.0000', 100, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 12, '2009-02-03 18:09:19', '2011-09-30 01:07:12', 1),
 (40, 'product 11', '', '', '', '', '', '', '', 969, 5, 'catalog/demo/iphone_1.jpg', 8, 1, '101.0000', 0, 9, '2009-02-03', '10.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 21:07:12', '2011-09-30 01:06:53', 1),
 (41, 'Product 14', '', '', '', '', '', '', '', 977, 5, 'catalog/demo/imac_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 21:07:26', '2011-09-30 01:06:44', 1),
-(43, 'Product 16', '', '', '', '', '', '', '', 929, 5, 'catalog/demo/macbook_1.jpg', 8, 0, '500.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:07:49', '2011-09-30 01:05:46', 1),
+(43, 'Product 16', '', '', '', '', '', '', '', 929, 5, 'catalog/demo/macbook_1.jpg', 8, 0, '500.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 4, '2009-02-03 21:07:49', '2011-09-30 01:05:46', 1),
 (44, 'Product 17', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/macbook_air_1.jpg', 8, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:00', '2011-09-30 01:05:53', 1),
 (45, 'Product 18', '', '', '', '', '', '', '', 998, 5, 'catalog/demo/macbook_pro_1.jpg', 8, 1, '2000.0000', 0, 100, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:17', '2011-09-15 22:22:01', 1),
 (46, 'Product 19', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/sony_vaio_1.jpg', 10, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:29', '2011-09-30 01:06:39', 1),
 (47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2009-02-03 21:08:40', '2011-09-30 01:05:28', 1),
-(48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 991, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 8, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 1),
+(48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 991, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 13, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 1),
 (49, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 2, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 1),
 (50, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/books/books-1.jpg', 0, 1, '210.5000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:24:10', '2021-02-21 16:24:10', 1),
 (51, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/books/books-2.jpg', 0, 1, '190.0000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:25:04', '2021-02-23 23:26:57', 1),
@@ -3059,13 +3089,13 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (57, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/beauty/beauty-3.jpg', 0, 1, '195.0000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:51:35', '2021-02-21 16:51:35', 1),
 (58, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/beauty/beauty-4.jpg', 8, 1, '433.0000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:52:09', '2021-02-21 16:52:09', 1),
 (59, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/beauty/beauty-5.jpg', 0, 1, '132.0000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:52:42', '2021-02-21 16:52:42', 1),
-(60, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/trousers-tvoe.jpg', 0, 1, '485.5000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:01:40', '2021-02-25 20:03:28', 1),
+(60, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/trousers-tvoe.jpg', 0, 1, '485.5000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-02-25 20:01:40', '2021-02-25 20:03:28', 1),
 (61, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/longsleeve-tvoe.jpg', 0, 1, '160.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 9, '2021-02-25 20:05:04', '2021-02-25 20:05:21', 1),
 (62, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/product/category/hudi-tvoe-1.jpg', 0, 1, '200.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:06:11', '2021-02-25 20:06:11', 1),
 (63, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-dekalton.jpg', 0, 1, '214.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:07:16', '2021-02-25 20:07:16', 1),
 (64, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/product/category/hudi-tvoe-2.jpg', 0, 1, '360.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:08:26', '2021-02-25 20:08:26', 1),
-(65, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/product/category/hudi-tvoe-3.jpg', 0, 1, '358.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:09:00', '2021-02-25 20:09:00', 1),
-(66, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-tvoe.jpg', 0, 1, '126.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-02-25 20:10:08', '2021-02-25 20:10:08', 1),
+(65, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/product/category/hudi-tvoe-3.jpg', 0, 1, '358.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-02-25 20:09:00', '2021-02-25 20:09:00', 1),
+(66, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-tvoe.jpg', 0, 1, '126.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 2, '2021-02-25 20:10:08', '2021-02-25 20:10:08', 1),
 (67, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-tvoe-nasa.jpg', 0, 1, '310.5000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-02-25 20:10:44', '2021-02-25 20:10:44', 1),
 (68, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-tvoe-1.jpg', 0, 1, '321.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:11:28', '2021-02-25 20:11:28', 1),
 (69, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/hudi-tvoe-4.jpg', 0, 1, '389.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:12:08', '2021-02-25 20:12:08', 1),
@@ -3074,7 +3104,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (72, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/t-shirt-tvoe-4.jpg', 0, 1, '119.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 1, '2021-02-25 20:14:04', '2021-02-25 20:14:04', 1),
 (73, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/hudi-tvoe-5.jpg', 0, 1, '537.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:14:33', '2021-02-25 20:14:33', 1),
 (74, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/category/hoody.jpg', 0, 1, '264.0000', 0, 0, '2021-02-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-25 20:15:09', '2021-02-25 20:15:09', 1),
-(75, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/hudi-1.jpg', 0, 1, '485.5000', 0, 0, '2021-02-25', '200.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 552, '2021-02-25 20:17:44', '2021-02-28 11:30:16', 1);
+(75, '123', '', '', '', '', '', '', '', 10, 7, 'catalog/product/hudi-1.jpg', 0, 1, '485.5000', 0, 0, '2021-02-25', '200.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 559, '2021-02-25 20:17:44', '2021-02-28 11:30:16', 1);
 
 -- --------------------------------------------------------
 
@@ -3925,7 +3955,8 @@ INSERT INTO `oc_review` (`review_id`, `product_id`, `customer_id`, `author`, `te
 (13, 65, 0, 'admin', 'Худи ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕ', 5, 1, '2021-02-22 11:59:24', '0000-00-00 00:00:00'),
 (14, 69, 0, 'admin', 'Худи ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕХуди ТВОЕ', 5, 1, '2021-02-22 11:59:24', '0000-00-00 00:00:00'),
 (15, 75, 0, 'admin', 'Худи ТVОЕХуди ТVОЕХуди ТVОЕХуди ТVОЕХуди ТVОЕХуди ТVОЕ', 5, 1, '2021-02-22 11:59:24', '2021-02-25 22:14:40'),
-(21, 75, 0, 'Михаил', 'ТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзыв', 4, 1, '2021-02-27 21:28:32', '2021-02-27 21:28:46');
+(21, 75, 0, 'Михаил', 'ТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзывТЕстовый отзыв', 4, 1, '2021-02-27 21:28:32', '2021-02-27 21:28:46'),
+(22, 43, 0, 'admin', 'MacBook SUPER', 4, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -4035,14 +4066,13 @@ INSERT INTO `oc_seo_url` (`seo_url_id`, `store_id`, `language_id`, `query`, `key
 (942, 0, 1, 'manufacturer_id=10', 'sony'),
 (848, 0, 1, 'information_id=6', 'delivery'),
 (852, 0, 1, 'information_id=3', 'privacy'),
-(854, 0, 1, 'information_id=5', 'terms'),
 (957, 0, 2, 'product_id=40', 'en_iphone'),
 (845, 0, 2, 'common/home', 'en'),
 (956, 0, 1, 'product_id=40', 'iphone'),
 (849, 0, 2, 'information_id=6', 'en_delivery'),
 (851, 0, 2, 'information_id=4', 'en_about_us'),
 (853, 0, 2, 'information_id=3', 'en_privacy'),
-(855, 0, 2, 'information_id=5', 'en_terms'),
+(986, 0, 1, 'information_id=5', 'terms'),
 (857, 0, 2, 'category_id=20', 'en_desktops'),
 (859, 0, 2, 'category_id=26', 'en_pc'),
 (861, 0, 2, 'category_id=27', 'en_mac'),
@@ -4124,19 +4154,28 @@ CREATE TABLE `oc_session` (
 INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('0da6156d7713ce6c9ae32b39d1', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-20 20:20:28'),
 ('0f91c0a285657f0a0782dca4dc', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"UrGRiFZQXC34DWI7Q3MzdmqUYz6YTKvT\"}', '2021-02-19 22:06:55'),
-('362a5d80eb4942c6b315109d90', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"Lv4OnOlXBBgSWFWwntbgozqB3N6L0OAw\",\"path\":\"61\",\"wishlist\":[\"75\"]}', '2021-03-09 15:20:56'),
+('362a5d80eb4942c6b315109d90', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"Lv4OnOlXBBgSWFWwntbgozqB3N6L0OAw\",\"path\":\"61\",\"wishlist\":[\"75\"]}', '2021-03-10 19:51:15'),
 ('4306eb45ef4e3d7d3089f80e00', 'false', '2021-03-03 20:21:44'),
+('518dfc3fc0657570769bcc8eae', '{\"api_id\":\"1\"}', '2021-04-05 19:23:50'),
+('5aefe8f30dd0082c6fa156869b', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"iaqJfyJ8bOYQrw3szL1JdrsS0scCYv1F\"}', '2021-04-14 20:33:32'),
 ('5c45d01d841221aaaaa631ad7b', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-28 06:31:27'),
+('679e5b853e480ac78da2acea6a', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"7nLExfVlOPAUnkmLD119NO3cgUHBFNv0\",\"install\":\"ibLs6oLWMZ\"}', '2021-03-13 06:04:58'),
 ('762a3a813989c6ca84b6042049', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-28 06:31:22'),
 ('855eb7192918b931bcb94cbbd5', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-03-03 19:22:08'),
 ('9233fc1345f088a3a7b9415697', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"vXujXJWPFXUJFI0mit0lRB0ySX9lc7Aq\",\"wishlist\":[\"75\"]}', '2021-03-08 17:00:22'),
+('a5671b5050be0919bece27b400', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"BbDhWSOVONyfGpzqtb0tvzxHlppQJp1i\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null}}', '2021-04-12 04:08:08'),
 ('acd03ea4f88adcc34a8ce51487', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"IiSgV8RXZuNFY78dSgxsKbwYFZQTq40O\",\"path\":\"34\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null},\"payment_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null},\"last_order_id\":3,\"compare\":[\"42\"]}', '2021-02-21 08:39:33'),
+('adee6e13e8d55b340918089c15', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null}}', '2021-04-12 13:26:41'),
+('b3be208b32fae12ad812e84899', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-04-12 13:40:14'),
+('b67c761a269bac04cb4f4fd9a6', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-04-12 14:16:54'),
+('b86045d130f6d6fd2130f15a24', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"K1BSqK6ZqWKDfyNCAeWc5Mdv9t0mQoom\"}', '2021-04-11 13:51:02'),
 ('ca40b667cead302142f1be3df1', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-17 20:37:37'),
 ('ddf4ba5b063149627a0be3214a', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"WWRpX4SnIms9UGVUMie0zEghcI7hvJuL\"}', '2021-03-01 13:15:53'),
 ('e24439387554ef9bf0ba14728c', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-02-28 06:34:11'),
 ('ecab96de30c237a999f856a75a', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-23 19:39:15'),
 ('f09f65567063ca33ffd753bf90', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"9FJm8PaUEMCHYNaBpVJWoOqrxA7OR54T\",\"last_order_id\":4}', '2021-02-22 04:50:13'),
-('fa550e1bcb32108ace6d8988f8', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-20 10:17:07');
+('fa550e1bcb32108ace6d8988f8', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-20 10:17:07'),
+('fa996cbaf07a80c5ec2f350360', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"Rt9hBFyBuwwiTzpHu0VvNdj1xq2T3U8k\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null}}', '2021-04-12 13:31:12');
 
 -- --------------------------------------------------------
 
@@ -4158,31 +4197,24 @@ CREATE TABLE `oc_setting` (
 --
 
 INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
-(1784, 0, 'config', 'config_valide_params', 'tracking\r\nutm_source\r\nutm_campaign\r\nutm_medium\r\ntype\r\nsource\r\nblock\r\nposition\r\nkeyword\r\nyclid\r\ngclid', 0),
-(1783, 0, 'config', 'config_valide_param_flag', '0', 0),
-(1782, 0, 'config', 'config_page_postfix', '', 0),
+(1959, 0, 'config', 'config_file_max_size', '300000', 0),
+(1960, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
 (4, 0, 'voucher', 'total_voucher_sort_order', '8', 0),
 (5, 0, 'voucher', 'total_voucher_status', '1', 0),
-(1774, 0, 'config', 'config_error_display', '1', 0),
-(1775, 0, 'config', 'config_error_log', '1', 0),
-(1776, 0, 'config', 'config_error_filename', 'error.log', 0),
-(1777, 0, 'config', 'config_seo_pro', '0', 0),
-(1778, 0, 'config', 'config_seo_url_include_path', '0', 0),
-(1779, 0, 'config', 'config_seo_url_cache', '0', 0),
-(1780, 0, 'config', 'config_seopro_addslash', '0', 0),
-(1781, 0, 'config', 'config_seopro_lowercase', '0', 0),
-(1123, 0, 'theme_default', 'theme_default_image_cart_width', '81', 0),
-(1122, 0, 'theme_default', 'theme_default_image_wishlist_height', '220', 0),
-(1766, 0, 'config', 'config_compression', '0', 0),
-(1767, 0, 'config', 'config_secure', '0', 0),
-(1768, 0, 'config', 'config_password', '1', 0),
-(1769, 0, 'config', 'config_shared', '0', 0),
-(1770, 0, 'config', 'config_encryption', 'RPji196QqGi6EkMuaFC9yEpIWjolKUz5zBeGcLY9m7mtVe5KMad0y65QFTaYdjssPBbS1YxTeMa8pKM9rV65BP2xOht7kfYCecQAzCuCiI4mXFPh2SbursGoFFViexDy2lhdoyA4j7ydU3zBx6zs8q8gr2e1qNTjCEb0ySK1m08aSNmftmzJS44iLWsR5j6cSJhRvJOifkWh56JoTko28slUfe5NiHPUH3LxKZZT3Q2dXMwGhPHLxIex37pn7FBA05WqkSLLzPnwsWNeqc6BdiJEA8eFBA8u1BfgeGzMTe1U4KDoy5eAUlSrWpj6GvZsb4mrNgPG3uA26VI3jZmiIHRleOPKzXQwCPMgWrHpiD8e3yRDwoT0dv2LAsIUVaWYg2UImY9yeaQZbpteItwh4VGXmxWYgBEuixIBq4hFqDSA1wCd6rFj6EXyK8Lmjdmt55FQsooYJr3DqzIysoef3LLxH4cdMShaSBUbmsrdmwtDrmBw2mA8BsQjGch9WtkAQ7g7FlUMimRudc0Le3NXCtXFv0lTmi0rpoTiIyOR4VxMWmrHR5qEpx2fhaTNdk897hj0dsP29gi3J5YtxvLCjFQUTbuOqy5C9QFSKg0sUmBk7KIlYxXBbaJnjDCwrVAAANUe9d0wYhTHuo9QzBSc2pprqhdXzrIeCndwqboHTNdyYsEc1bqDwdvx8YbaOtHJthPiDGxMoTYP6Y8dnHNZCoRYWxrG96MLGeiRenTwBsxL19SYEbAzgBHN5auBdXr1X9gKWEGIw6apW77wop0fu4vgIHFxDTqBv7ik4yMFzXa7H5h9yTCvSw5tOHCSXh9q2RpAIX7MC6oViNpXIcrn6JyKqhOGOeJP5S5f42u2De4xr6jaH0BXS6CwZsqfmsdWM6siH8rQK5seEobKXBa7NEIVR5xBN7UmevNZSiLduVaVslpYmKN9fWbmL3x1LRm7xXSw9VyXuTnpQKlePkbZXrQWNulUuOLREtJtYEx4E1wc1SKGaNfF0T0SWFzsxLtR', 0),
-(1771, 0, 'config', 'config_file_max_size', '300000', 0),
-(1772, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(1773, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(1765, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(1764, 0, 'config', 'config_seo_url', '0', 0),
+(1961, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(2049, 0, 'theme_default', 'theme_default_image_location_width', '260', 0),
+(2048, 0, 'theme_default', 'theme_default_image_cart_height', '81', 0),
+(1967, 0, 'config', 'config_seo_url_cache', '0', 0),
+(1966, 0, 'config', 'config_seo_url_include_path', '0', 0),
+(1965, 0, 'config', 'config_seo_pro', '0', 0),
+(1962, 0, 'config', 'config_error_display', '1', 0),
+(1963, 0, 'config', 'config_error_log', '1', 0),
+(1964, 0, 'config', 'config_error_filename', 'error.log', 0),
+(1954, 0, 'config', 'config_compression', '0', 0),
+(1955, 0, 'config', 'config_secure', '0', 0),
+(1956, 0, 'config', 'config_password', '1', 0),
+(1957, 0, 'config', 'config_shared', '0', 0),
+(1958, 0, 'config', 'config_encryption', 'RPji196QqGi6EkMuaFC9yEpIWjolKUz5zBeGcLY9m7mtVe5KMad0y65QFTaYdjssPBbS1YxTeMa8pKM9rV65BP2xOht7kfYCecQAzCuCiI4mXFPh2SbursGoFFViexDy2lhdoyA4j7ydU3zBx6zs8q8gr2e1qNTjCEb0ySK1m08aSNmftmzJS44iLWsR5j6cSJhRvJOifkWh56JoTko28slUfe5NiHPUH3LxKZZT3Q2dXMwGhPHLxIex37pn7FBA05WqkSLLzPnwsWNeqc6BdiJEA8eFBA8u1BfgeGzMTe1U4KDoy5eAUlSrWpj6GvZsb4mrNgPG3uA26VI3jZmiIHRleOPKzXQwCPMgWrHpiD8e3yRDwoT0dv2LAsIUVaWYg2UImY9yeaQZbpteItwh4VGXmxWYgBEuixIBq4hFqDSA1wCd6rFj6EXyK8Lmjdmt55FQsooYJr3DqzIysoef3LLxH4cdMShaSBUbmsrdmwtDrmBw2mA8BsQjGch9WtkAQ7g7FlUMimRudc0Le3NXCtXFv0lTmi0rpoTiIyOR4VxMWmrHR5qEpx2fhaTNdk897hj0dsP29gi3J5YtxvLCjFQUTbuOqy5C9QFSKg0sUmBk7KIlYxXBbaJnjDCwrVAAANUe9d0wYhTHuo9QzBSc2pprqhdXzrIeCndwqboHTNdyYsEc1bqDwdvx8YbaOtHJthPiDGxMoTYP6Y8dnHNZCoRYWxrG96MLGeiRenTwBsxL19SYEbAzgBHN5auBdXr1X9gKWEGIw6apW77wop0fu4vgIHFxDTqBv7ik4yMFzXa7H5h9yTCvSw5tOHCSXh9q2RpAIX7MC6oViNpXIcrn6JyKqhOGOeJP5S5f42u2De4xr6jaH0BXS6CwZsqfmsdWM6siH8rQK5seEobKXBa7NEIVR5xBN7UmevNZSiLduVaVslpYmKN9fWbmL3x1LRm7xXSw9VyXuTnpQKlePkbZXrQWNulUuOLREtJtYEx4E1wc1SKGaNfF0T0SWFzsxLtR', 0),
 (95, 0, 'payment_free_checkout', 'payment_free_checkout_status', '1', 0),
 (96, 0, 'payment_free_checkout', 'free_checkout_order_status_id', '1', 0),
 (97, 0, 'payment_free_checkout', 'payment_free_checkout_sort_order', '1', 0),
@@ -4213,24 +4245,20 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (122, 0, 'total_coupon', 'total_coupon_status', '1', 0),
 (123, 0, 'module_category', 'module_category_status', '1', 0),
 (124, 0, 'module_account', 'module_account_status', '1', 0),
-(1121, 0, 'theme_default', 'theme_default_image_wishlist_width', '260', 0),
+(2047, 0, 'theme_default', 'theme_default_image_cart_width', '81', 0),
 (808, 0, 'module_filter', 'module_filter_status', '1', 0),
-(1120, 0, 'theme_default', 'theme_default_image_compare_height', '220', 0),
-(1119, 0, 'theme_default', 'theme_default_image_compare_width', '260', 0),
-(1118, 0, 'theme_default', 'theme_default_image_related_height', '260', 0),
-(1117, 0, 'theme_default', 'theme_default_image_related_width', '300', 0),
-(1116, 0, 'theme_default', 'theme_default_image_additional_height', '168', 0),
-(1115, 0, 'theme_default', 'theme_default_image_additional_width', '192', 0),
-(1114, 0, 'theme_default', 'theme_default_image_product_height', '260', 0),
-(1113, 0, 'theme_default', 'theme_default_image_product_width', '300', 0),
-(1112, 0, 'theme_default', 'theme_default_image_popup_height', '693', 0),
-(1111, 0, 'theme_default', 'theme_default_image_popup_width', '800', 0),
-(1110, 0, 'theme_default', 'theme_default_image_thumb_height', '693', 0),
-(1109, 0, 'theme_default', 'theme_default_image_thumb_width', '800', 0),
-(1108, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
-(1107, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
-(1106, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
-(1105, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(2046, 0, 'theme_default', 'theme_default_image_wishlist_height', '220', 0),
+(2045, 0, 'theme_default', 'theme_default_image_wishlist_width', '260', 0),
+(2044, 0, 'theme_default', 'theme_default_image_compare_height', '220', 0),
+(2043, 0, 'theme_default', 'theme_default_image_compare_width', '260', 0),
+(2042, 0, 'theme_default', 'theme_default_image_related_height', '220', 0),
+(2041, 0, 'theme_default', 'theme_default_image_related_width', '260', 0),
+(2040, 0, 'theme_default', 'theme_default_image_additional_height', '168', 0),
+(2039, 0, 'theme_default', 'theme_default_image_additional_width', '192', 0),
+(2038, 0, 'theme_default', 'theme_default_image_product_height', '260', 0),
+(2037, 0, 'theme_default', 'theme_default_image_product_width', '300', 0),
+(2036, 0, 'theme_default', 'theme_default_image_popup_height', '693', 0),
+(2033, 0, 'theme_default', 'theme_default_image_thumb_width', '800', 0),
 (151, 0, 'dashboard_activity', 'dashboard_activity_status', '1', 0),
 (152, 0, 'dashboard_activity', 'dashboard_activity_sort_order', '7', 0),
 (153, 0, 'dashboard_sale', 'dashboard_sale_status', '1', 0),
@@ -4303,87 +4331,98 @@ INSERT INTO `oc_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `ser
 (221, 0, 'configblog', 'configblog_image_related_width', '200', 0),
 (222, 0, 'configblog', 'configblog_image_related_height', '200', 0),
 (223, 0, 'module_blog_category', 'module_blog_category_status', '1', 0),
-(1762, 0, 'config', 'config_mail_alert_email', '', 0),
-(1763, 0, 'config', 'config_maintenance', '0', 0),
-(1761, 0, 'config', 'config_mail_alert', '[\"account\",\"affiliate\",\"order\",\"review\"]', 1),
-(1760, 0, 'config', 'config_mail_smtp_timeout', '', 0),
-(1759, 0, 'config', 'config_mail_smtp_port', '', 0),
-(1758, 0, 'config', 'config_mail_smtp_password', '', 0),
-(1753, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(1754, 0, 'config', 'config_mail_engine', 'mail', 0),
-(1755, 0, 'config', 'config_mail_parameter', '', 0),
-(1756, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(1757, 0, 'config', 'config_mail_smtp_username', '', 0),
-(1752, 0, 'config', 'config_logo', 'catalog/header/logo.png', 0),
-(1751, 0, 'config', 'config_captcha_page', '[\"review\",\"return\",\"contact\"]', 1),
+(1953, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai\'hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(1952, 0, 'config', 'config_seo_url', '0', 0),
+(1951, 0, 'config', 'config_maintenance', '0', 0),
+(1950, 0, 'config', 'config_mail_alert_email', '', 0),
+(1949, 0, 'config', 'config_mail_alert', '[\"account\",\"affiliate\",\"order\",\"review\"]', 1),
+(1947, 0, 'config', 'config_mail_smtp_port', '', 0),
+(1948, 0, 'config', 'config_mail_smtp_timeout', '', 0),
+(1945, 0, 'config', 'config_mail_smtp_username', '', 0),
 (229, 0, 'developer', 'developer_theme', '0', 0),
-(1750, 0, 'config', 'config_captcha', '', 0),
-(1749, 0, 'config', 'config_return_status_id', '2', 0),
-(1748, 0, 'config', 'config_return_id', '0', 0),
-(1747, 0, 'config', 'config_affiliate_id', '4', 0),
-(1746, 0, 'config', 'config_affiliate_commission', '5', 0),
-(1745, 0, 'config', 'config_affiliate_auto', '0', 0),
-(1744, 0, 'config', 'config_affiliate_approval', '0', 0),
-(1743, 0, 'config', 'config_affiliate_group_id', '1', 0),
-(1742, 0, 'config', 'config_stock_checkout', '0', 0),
-(1740, 0, 'config', 'config_stock_display', '0', 0),
-(1741, 0, 'config', 'config_stock_warning', '0', 0),
-(1739, 0, 'config', 'config_api_id', '1', 0),
-(1738, 0, 'config', 'config_fraud_status_id', '16', 0),
-(1737, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
-(1735, 0, 'config', 'config_order_status_id', '1', 0),
-(1736, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
-(1734, 0, 'config', 'config_checkout_id', '5', 0),
-(1733, 0, 'config', 'config_checkout_guest', '1', 0),
-(1732, 0, 'config', 'config_cart_weight', '1', 0),
-(1730, 0, 'config', 'config_account_id', '3', 0),
-(1731, 0, 'config', 'config_invoice_prefix', 'INV-2021-00', 0),
-(1104, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
-(1103, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
-(1102, 0, 'theme_default', 'theme_default_status', '1', 0),
-(1101, 0, 'theme_default', 'theme_default_directory', 'default', 0),
-(1729, 0, 'config', 'config_login_attempts', '5', 0),
-(1728, 0, 'config', 'config_customer_price', '0', 0),
-(1727, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
-(1124, 0, 'theme_default', 'theme_default_image_cart_height', '81', 0),
-(1125, 0, 'theme_default', 'theme_default_image_location_width', '260', 0),
-(1126, 0, 'theme_default', 'theme_default_image_location_height', '220', 0),
-(1725, 0, 'config', 'config_customer_search', '0', 0),
-(1726, 0, 'config', 'config_customer_group_id', '1', 0),
-(1724, 0, 'config', 'config_customer_activity', '0', 0),
-(1723, 0, 'config', 'config_customer_online', '0', 0),
-(1722, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(1721, 0, 'config', 'config_tax_default', 'shipping', 0),
-(1720, 0, 'config', 'config_tax', '1', 0),
-(1719, 0, 'config', 'config_voucher_max', '1000', 0),
-(1718, 0, 'config', 'config_voucher_min', '1', 0),
-(1717, 0, 'config', 'config_review_guest', '1', 0),
-(1716, 0, 'config', 'config_review_status', '1', 0),
-(1715, 0, 'config', 'config_limit_admin', '100', 0),
-(1714, 0, 'config', 'config_product_count', '0', 0),
-(1713, 0, 'config', 'config_weight_class_id', '2', 0),
-(1712, 0, 'config', 'config_length_class_id', '1', 0),
-(1711, 0, 'config', 'config_currency_auto', '1', 0),
-(1710, 0, 'config', 'config_currency', 'TMT', 0),
-(1709, 0, 'config', 'config_admin_language', 'ru-ru', 0),
-(1708, 0, 'config', 'config_language', 'ru-ru', 0),
-(1707, 0, 'config', 'config_zone_id', '3396', 0),
-(1706, 0, 'config', 'config_country_id', '216', 0),
-(1705, 0, 'config', 'config_comment', '', 0),
-(1704, 0, 'config', 'config_open', '', 0),
-(1703, 0, 'config', 'config_image', '', 0),
-(1701, 0, 'config', 'config_telephone', '+(993 12) 45-45-45', 0),
-(1702, 0, 'config', 'config_fax', '+(993 65) 65-65-65', 0),
-(1699, 0, 'config', 'config_geocode', '', 0),
-(1700, 0, 'config', 'config_email', 'info@snmarket.com', 0),
-(1698, 0, 'config', 'config_address', ' г. Ашхабад, Он йыл Абаданчылык 137', 0),
-(1693, 0, 'config', 'config_meta_keyword', '', 0),
-(1694, 0, 'config', 'config_theme', 'default', 0),
-(1695, 0, 'config', 'config_layout_id', '4', 0),
-(1696, 0, 'config', 'config_name', 'SN', 0),
-(1697, 0, 'config', 'config_owner', 'Ваш магазин', 0),
-(1691, 0, 'config', 'config_meta_title', 'Ваш магазин', 0),
-(1692, 0, 'config', 'config_meta_description', 'Мой магазин', 0);
+(1946, 0, 'config', 'config_mail_smtp_password', '', 0),
+(1944, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(1943, 0, 'config', 'config_mail_parameter', '', 0),
+(1942, 0, 'config', 'config_mail_engine', 'mail', 0),
+(1941, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(1940, 0, 'config', 'config_logo', 'catalog/header/logo.png', 0),
+(1939, 0, 'config', 'config_captcha_page', '[\"review\",\"return\",\"contact\"]', 1),
+(1938, 0, 'config', 'config_captcha', '', 0),
+(1937, 0, 'config', 'config_return_status_id', '2', 0),
+(1936, 0, 'config', 'config_return_id', '0', 0),
+(1935, 0, 'config', 'config_affiliate_id', '4', 0),
+(1934, 0, 'config', 'config_affiliate_commission', '5', 0),
+(1933, 0, 'config', 'config_affiliate_auto', '0', 0),
+(1932, 0, 'config', 'config_affiliate_approval', '0', 0),
+(2035, 0, 'theme_default', 'theme_default_image_popup_width', '800', 0),
+(2034, 0, 'theme_default', 'theme_default_image_thumb_height', '693', 0),
+(2032, 0, 'theme_default', 'theme_default_image_manufacturer_height', '80', 0),
+(1931, 0, 'config', 'config_affiliate_group_id', '1', 0),
+(1930, 0, 'config', 'config_stock_checkout', '0', 0),
+(1929, 0, 'config', 'config_stock_warning', '0', 0),
+(2031, 0, 'theme_default', 'theme_default_image_manufacturer_width', '80', 0),
+(2029, 0, 'theme_default', 'theme_default_image_category_width', '80', 0),
+(2030, 0, 'theme_default', 'theme_default_image_category_height', '80', 0),
+(1928, 0, 'config', 'config_stock_display', '0', 0),
+(1927, 0, 'config', 'config_api_id', '1', 0),
+(1926, 0, 'config', 'config_fraud_status_id', '16', 0),
+(1925, 0, 'config', 'config_complete_status', '[\"3\",\"5\"]', 1),
+(1924, 0, 'config', 'config_processing_status', '[\"2\",\"3\",\"1\",\"12\",\"5\"]', 1),
+(1923, 0, 'config', 'config_order_status_id', '1', 0),
+(1922, 0, 'config', 'config_checkout_id', '5', 0),
+(1921, 0, 'config', 'config_checkout_guest', '1', 0),
+(1920, 0, 'config', 'config_cart_weight', '1', 0),
+(1919, 0, 'config', 'config_invoice_prefix', 'INV-2021-00', 0),
+(1918, 0, 'config', 'config_account_id', '5', 0),
+(1917, 0, 'config', 'config_login_attempts', '5', 0),
+(1916, 0, 'config', 'config_customer_price', '0', 0),
+(1915, 0, 'config', 'config_customer_group_display', '[\"1\"]', 1),
+(1914, 0, 'config', 'config_customer_group_id', '1', 0),
+(1912, 0, 'config', 'config_customer_activity', '0', 0),
+(1913, 0, 'config', 'config_customer_search', '0', 0),
+(1910, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(1911, 0, 'config', 'config_customer_online', '0', 0),
+(1909, 0, 'config', 'config_tax_default', 'shipping', 0),
+(1908, 0, 'config', 'config_tax', '1', 0),
+(1907, 0, 'config', 'config_voucher_max', '1000', 0),
+(1905, 0, 'config', 'config_review_guest', '1', 0),
+(1906, 0, 'config', 'config_voucher_min', '1', 0),
+(1902, 0, 'config', 'config_product_count', '0', 0),
+(1903, 0, 'config', 'config_limit_admin', '100', 0),
+(1904, 0, 'config', 'config_review_status', '1', 0),
+(1901, 0, 'config', 'config_weight_class_id', '2', 0),
+(1898, 0, 'config', 'config_currency', 'TMT', 0),
+(1899, 0, 'config', 'config_currency_auto', '1', 0),
+(1900, 0, 'config', 'config_length_class_id', '1', 0),
+(1887, 0, 'config', 'config_geocode', '', 0),
+(1888, 0, 'config', 'config_email', 'info@snmarket.com', 0),
+(1889, 0, 'config', 'config_telephone', '+(993 12) 45-45-45', 0),
+(1890, 0, 'config', 'config_fax', '+(993 65) 65-65-65', 0),
+(1891, 0, 'config', 'config_image', '', 0),
+(1892, 0, 'config', 'config_open', '', 0),
+(1893, 0, 'config', 'config_comment', '', 0),
+(1894, 0, 'config', 'config_country_id', '216', 0),
+(1895, 0, 'config', 'config_zone_id', '3396', 0),
+(1896, 0, 'config', 'config_language', 'ru-ru', 0),
+(1897, 0, 'config', 'config_admin_language', 'ru-ru', 0),
+(1886, 0, 'config', 'config_address', ' г. Ашхабад, Он йыл Абаданчылык 137', 0),
+(1885, 0, 'config', 'config_owner', 'Ваш магазин', 0),
+(1884, 0, 'config', 'config_name', 'SN', 0),
+(1883, 0, 'config', 'config_layout_id', '4', 0),
+(1882, 0, 'config', 'config_theme', 'default', 0),
+(1881, 0, 'config', 'config_meta_keyword', '', 0),
+(1879, 0, 'config', 'config_meta_title', 'Ваш магазин', 0),
+(1880, 0, 'config', 'config_meta_description', 'Мой магазин', 0),
+(1968, 0, 'config', 'config_seopro_addslash', '0', 0),
+(1969, 0, 'config', 'config_seopro_lowercase', '0', 0),
+(1970, 0, 'config', 'config_page_postfix', '', 0),
+(1971, 0, 'config', 'config_valide_param_flag', '0', 0),
+(1972, 0, 'config', 'config_valide_params', 'tracking\r\nutm_source\r\nutm_campaign\r\nutm_medium\r\ntype\r\nsource\r\nblock\r\nposition\r\nkeyword\r\nyclid\r\ngclid', 0),
+(2028, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
+(2027, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
+(2026, 0, 'theme_default', 'theme_default_status', '1', 0),
+(2025, 0, 'theme_default', 'theme_default_directory', 'default', 0),
+(2050, 0, 'theme_default', 'theme_default_image_location_height', '220', 0);
 
 -- --------------------------------------------------------
 
@@ -9989,13 +10028,13 @@ ALTER TABLE `oc_api`
 -- AUTO_INCREMENT для таблицы `oc_api_ip`
 --
 ALTER TABLE `oc_api_ip`
-  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `api_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_api_session`
 --
 ALTER TABLE `oc_api_session`
-  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `api_session_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_article`
@@ -10043,7 +10082,7 @@ ALTER TABLE `oc_blog_category`
 -- AUTO_INCREMENT для таблицы `oc_cart`
 --
 ALTER TABLE `oc_cart`
-  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `cart_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_category`
@@ -10085,7 +10124,7 @@ ALTER TABLE `oc_currency`
 -- AUTO_INCREMENT для таблицы `oc_customer`
 --
 ALTER TABLE `oc_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_customer_activity`
@@ -10115,13 +10154,13 @@ ALTER TABLE `oc_customer_history`
 -- AUTO_INCREMENT для таблицы `oc_customer_ip`
 --
 ALTER TABLE `oc_customer_ip`
-  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_ip_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_customer_login`
 --
 ALTER TABLE `oc_customer_login`
-  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_customer_reward`
@@ -10175,13 +10214,13 @@ ALTER TABLE `oc_extension`
 -- AUTO_INCREMENT для таблицы `oc_extension_install`
 --
 ALTER TABLE `oc_extension_install`
-  MODIFY `extension_install_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `extension_install_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_extension_path`
 --
 ALTER TABLE `oc_extension_path`
-  MODIFY `extension_path_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `extension_path_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_filter`
@@ -10223,13 +10262,13 @@ ALTER TABLE `oc_layout`
 -- AUTO_INCREMENT для таблицы `oc_layout_module`
 --
 ALTER TABLE `oc_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_length_class`
@@ -10259,7 +10298,7 @@ ALTER TABLE `oc_marketing`
 -- AUTO_INCREMENT для таблицы `oc_modification`
 --
 ALTER TABLE `oc_modification`
-  MODIFY `modification_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `modification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_module`
@@ -10421,7 +10460,7 @@ ALTER TABLE `oc_return_status`
 -- AUTO_INCREMENT для таблицы `oc_review`
 --
 ALTER TABLE `oc_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_review_article`
@@ -10433,13 +10472,13 @@ ALTER TABLE `oc_review_article`
 -- AUTO_INCREMENT для таблицы `oc_seo_url`
 --
 ALTER TABLE `oc_seo_url`
-  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=986;
+  MODIFY `seo_url_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=987;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_setting`
 --
 ALTER TABLE `oc_setting`
-  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1785;
+  MODIFY `setting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2051;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_statistics`
