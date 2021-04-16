@@ -1831,7 +1831,15 @@ h4.catalog__item-title:hover{
 .banner-1, .banner-2{
 	overflow: hidden;
 }
+.banner-1{
+	margin-right: 15px;
+}
+.banner-2{
+	margin-left: 15px;
+}
 .banner-1 a img, .banner-2 a img{
+	object-fit: cover;
+	width: 100%;
 	-webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
@@ -2937,6 +2945,9 @@ table.table__account{
 	.item__main-line{
 		margin-bottom: 20px;
 	}
+	.banners{
+		margin: 0px 0 50px 0;
+	}
 }
 @media(max-width: 1400px){
 	#search .input-lg{
@@ -3169,6 +3180,18 @@ table.table__account{
 @media(max-width: 886px){
 	.item__wrapper{
 		justify-content: space-evenly;
+	}
+}
+@media(max-width: 750px){
+	.banners{
+		display: block;
+	}
+	.banner-1 {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+	.banner-2 {
+		margin-left: 0;
 	}
 }
 @media(max-width: 721px){
