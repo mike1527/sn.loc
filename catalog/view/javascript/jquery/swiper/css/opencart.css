@@ -47,8 +47,8 @@
     cursor: pointer;
     pointer-events: auto;
 }
-/*@media(max-width: 1500px){*/
-/*	.swiper-viewport{*/
-/*		margin-bottom: 50px;*/
-/*	}*/
-/*}*/
+@media(max-width: 1546px){
+	.swiper-viewport{
+		margin-bottom: 50px;
+	}
+}

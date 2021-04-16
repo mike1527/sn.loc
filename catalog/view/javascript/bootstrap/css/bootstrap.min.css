@@ -1389,20 +1389,15 @@ img {
     vertical-align: middle;
 }
 img.item__img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
     transition: all .5s;
 }
 img.item__img:hover{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
-
-
-/*.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {*/
-/*    display: block;*/
-/*    max-width: 100%;*/
-/*    height: auto*/
-/*}*/
-
 .img-rounded {
     border-radius: 6px
 }
