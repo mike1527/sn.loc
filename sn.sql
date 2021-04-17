@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 15 2021 г., 05:43
+-- Время создания: Апр 16 2021 г., 16:04
 -- Версия сервера: 10.3.22-MariaDB
--- Версия PHP: 7.3.17
+-- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1476,7 +1476,7 @@ INSERT INTO `oc_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbo
 (1, 'Рубль', 'RUB', '', 'р.', '2', 0.00450000, 1, '2021-02-21 12:42:47'),
 (2, 'US Dollar', 'USD', '$', '', '2', 0.01697793, 1, '2017-07-19 21:28:21'),
 (3, 'Euro', 'EUR', '', '€', '2', 0.01476363, 1, '2017-07-19 21:28:21'),
-(5, 'Манат', 'TMT', '', '', '2', 1.00000000, 1, '2021-04-12 12:28:16');
+(5, 'Манат', 'TMT', '', '', '2', 1.00000000, 1, '2021-04-16 04:58:20');
 
 -- --------------------------------------------------------
 
@@ -2300,8 +2300,9 @@ INSERT INTO `oc_layout_module` (`layout_module_id`, `layout_id`, `code`, `positi
 (86, 17, 'featured_article.34', 'column_left', 0),
 (87, 17, 'featured_product.35', 'column_left', 1),
 (88, 2, 'featured_article.34', 'content_bottom', 0),
-(123, 1, 'slideshow.27', 'content_top', 0),
-(124, 1, 'bestseller.36', 'content_top', 1);
+(129, 1, 'bestseller.36', 'content_top', 1),
+(128, 1, 'slideshow.27', 'content_top', 0),
+(130, 1, 'html.38', 'content_top', 2);
 
 -- --------------------------------------------------------
 
@@ -2324,7 +2325,7 @@ INSERT INTO `oc_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rout
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (78, 3, 0, 'product/category'),
-(82, 1, 0, 'common/home'),
+(86, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
@@ -3063,7 +3064,7 @@ CREATE TABLE `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `noindex`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 938, 7, 'catalog/demo/htc_touch_hd_1.jpg', 5, 1, '100.0000', 200, 9, '2009-02-03', '146.40000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2011-09-30 01:05:39', 1),
 (29, 'Product 2', '', '', '', '', '', '', '', 998, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, '279.9900', 0, 9, '2009-02-03', '133.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08', 1),
-(30, 'Product 3', '', '', '', '', '', '', '', 6, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 6, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 1),
+(30, 'Product 3', '', '', '', '', '', '', '', 6, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 7, '2009-02-03 16:59:00', '2011-09-30 01:05:23', 1),
 (31, 'Product 4', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/nikon_d300_1.jpg', 0, 1, '80.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2011-09-30 01:06:00', 1),
 (32, 'Product 5', '', '', '', '', '', '', '', 998, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 6, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 1),
 (33, 'Product 6', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, '300.0000', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 1, '2009-02-03 17:08:31', '2021-02-21 12:26:42', 1),
@@ -3077,7 +3078,7 @@ INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `is
 (45, 'Product 18', '', '', '', '', '', '', '', 998, 5, 'catalog/demo/macbook_pro_1.jpg', 8, 1, '2000.0000', 0, 100, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:17', '2011-09-15 22:22:01', 1),
 (46, 'Product 19', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/sony_vaio_1.jpg', 10, 1, '1000.0000', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:29', '2011-09-30 01:06:39', 1),
 (47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100.0000', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2009-02-03 21:08:40', '2011-09-30 01:05:28', 1),
-(48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 991, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 13, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 1),
+(48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 991, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100.0000', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 14, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 1),
 (49, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, '199.9900', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 2, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 1),
 (50, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/books/books-1.jpg', 0, 1, '210.5000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:24:10', '2021-02-21 16:24:10', 1),
 (51, '123', '', '', '', '', '', '', '', 1, 7, 'catalog/category/books/books-2.jpg', 0, 1, '190.0000', 0, 0, '2021-02-21', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 0, '2021-02-21 16:25:04', '2021-02-23 23:26:57', 1),
@@ -4166,7 +4167,7 @@ INSERT INTO `oc_session` (`session_id`, `data`, `expire`) VALUES
 ('a5671b5050be0919bece27b400', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"BbDhWSOVONyfGpzqtb0tvzxHlppQJp1i\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null}}', '2021-04-12 04:08:08'),
 ('acd03ea4f88adcc34a8ce51487', '{\"language\":\"ru-ru\",\"currency\":\"RUB\",\"user_id\":\"1\",\"user_token\":\"IiSgV8RXZuNFY78dSgxsKbwYFZQTq40O\",\"path\":\"34\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null},\"payment_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null},\"last_order_id\":3,\"compare\":[\"42\"]}', '2021-02-21 08:39:33'),
 ('adee6e13e8d55b340918089c15', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"customer_id\":\"1\",\"shipping_address\":{\"address_id\":\"1\",\"firstname\":\"Mihail\",\"lastname\":\"Yurkevich\",\"company\":\"\",\"address_1\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"address_2\":\"9 \\u043c\\u043a\\u0440 1-1-20\",\"postcode\":\"\",\"city\":\"\\u0410\\u0448\\u0433\\u0430\\u0431\\u0430\\u0434\",\"zone_id\":\"3396\",\"zone\":\"Ahal Welayaty\",\"zone_code\":\"A\",\"country_id\":\"216\",\"country\":\"\\u0422\\u0443\\u0440\\u043a\\u043c\\u0435\\u043d\\u0438\\u0441\\u0442\\u0430\\u043d\",\"iso_code_2\":\"TM\",\"iso_code_3\":\"TKM\",\"address_format\":\"\",\"custom_field\":null}}', '2021-04-12 13:26:41'),
-('b3be208b32fae12ad812e84899', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-04-12 13:40:14'),
+('b3be208b32fae12ad812e84899', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"o0GhESryvmaJer1bQBIU6MN3neePm7mz\"}', '2021-04-16 13:41:56'),
 ('b67c761a269bac04cb4f4fd9a6', '{\"language\":\"ru-ru\",\"currency\":\"TMT\"}', '2021-04-12 14:16:54'),
 ('b86045d130f6d6fd2130f15a24', '{\"language\":\"ru-ru\",\"currency\":\"TMT\",\"user_id\":\"1\",\"user_token\":\"K1BSqK6ZqWKDfyNCAeWc5Mdv9t0mQoom\"}', '2021-04-11 13:51:02'),
 ('ca40b667cead302142f1be3df1', '{\"language\":\"ru-ru\",\"currency\":\"RUB\"}', '2021-02-17 20:37:37'),
@@ -10262,13 +10263,13 @@ ALTER TABLE `oc_layout`
 -- AUTO_INCREMENT для таблицы `oc_layout_module`
 --
 ALTER TABLE `oc_layout_module`
-  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+  MODIFY `layout_module_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_layout_route`
 --
 ALTER TABLE `oc_layout_route`
-  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `layout_route_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT для таблицы `oc_length_class`

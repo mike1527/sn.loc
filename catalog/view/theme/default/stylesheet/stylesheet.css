@@ -3232,6 +3232,13 @@ table.table__account{
 	.tab{
 		padding: 14px 18px;
 	}
+	.popup__reg-agree{
+		text-align: center;
+		font-size: 16px;
+	}
+	.popup__reg-agree a {
+		font-size: 16px;
+	}
 }
 @media(max-width: 670px){
 	a.header__item{
@@ -3255,6 +3262,33 @@ table.table__account{
 @media(max-width: 580px){
 	.catalog__container {
 		width: 47.4%;
+	}
+	#form-popup {
+		width: 420px;
+	}
+	.nav-tab{
+		font-size: 17px;
+		padding: 13px 0;
+	}
+	.login__title {
+		font-size: 15px;
+		margin-bottom: 12px;
+	}
+	.login__item{
+		height: 40px;
+		padding: 10px 30px;
+		font-size: 15px;
+	}
+	.login__item::placeholder{
+		font-size: 15px;
+	}
+	.login__btn{
+		font-size: 17px;
+		margin-bottom: 18px;
+		height: 40px;
+	}
+	.item__link{
+		font-size: 15px;
 	}
 }
 @media(max-width: 544px){
@@ -3295,13 +3329,24 @@ table.table__account{
 		margin-bottom: 10px;
 	}
 }
-@media(max-width: 450px){
+@media(max-width: 450px) {
 	.item__box {
 		width: 260px;
 		height: 436px;
 	}
+
 	.item__content-link {
 		padding: 10px 0;
+	}
+
+	#form-popup {
+		width: 380px;
+	}
+	.popup__reg-agree {
+		width: 80%;
+	}
+	.input-popup__keep, .span-reg__keep-style{
+		top: 0;
 	}
 }
 @media(max-width: 440px) {
@@ -3318,9 +3363,67 @@ table.table__account{
 		min-width: unset;
 	}
 }
+@media(max-width: 400px){
+	#form-popup {
+		width: 340px;
+	}
+	.nav-tab{
+		font-size: 15px;
+		padding: 10px 0;
+	}
+	.login__title {
+		font-size: 14px;
+		margin-bottom: 8px;
+	}
+	.login__item{
+		height: 40px;
+		padding: 10px 30px;
+		font-size: 15px;
+	}
+	.login__item::placeholder{
+		font-size: 15px;
+	}
+	.login__btn{
+		font-size: 16px;
+		margin-bottom: 10px;
+		height: 40px;
+	}
+	.item__link{
+		font-size: 14px;
+	}
+}
 @media(max-width: 380px){
 	a.header__information-link{
 		font-size: 12px;
+	}
+}
+@media(max-width: 345px){
+	#form-popup {
+		width: 310px;
+	}
+	.nav-tab{
+		font-size: 15px;
+		padding: 10px 0;
+	}
+	.login__title {
+		font-size: 14px;
+		margin-bottom: 8px;
+	}
+	.login__item{
+		height: 40px;
+		padding: 10px 30px;
+		font-size: 15px;
+	}
+	.login__item::placeholder{
+		font-size: 15px;
+	}
+	.login__btn{
+		font-size: 16px;
+		margin-bottom: 10px;
+		height: 40px;
+	}
+	.item__link{
+		font-size: 14px;
 	}
 }
 
