@@ -80,7 +80,7 @@ class Pagination {
 
 			for ($i = $start; $i <= $end; $i++) {
 				if ($page == $i) {
-					$output .= '<li class="active"><span>' . $i . '</span></li>';
+					$output .= '<li class="active__page-numb"><span>' . $i . '</span></li>';
 				}
 				else {
 					if ($i === 1) {

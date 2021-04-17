@@ -182,7 +182,7 @@
             </div>
 
 
-        </div>
+{#        </div>#}
 
 
 {#----------------start style for select option----------------#}
@@ -212,7 +212,7 @@
             function openSelect()
             {
                 item.classList.add('open');
-                let height = (content.firstElementChild.clientHeight > 212) ? 256 : content.firstElementChild.clientHeight;
+                let height = (content.firstElementChild.clientHeight > 212) ? 200 : content.firstElementChild.clientHeight;
                 content.style.height = height + 'px';
             }
 
@@ -232,10 +232,8 @@
                 result.innerHTML = target.innerHTML;
                 input.value = target.getAttribute('data-option');
 
-                let eventClick = document.createEvent('Event');
-                eventClick.initEvent("selectChange", true, true);
-                eventClick.eventName = "selectChange";
-                input.dispatchEvent(eventClick);
+                let inputEvent = new Event('input');
+                input.dispatchEvent(inputEvent);
             }
 
             function setActive(target)
@@ -247,6 +245,12 @@
     }
 
     mySelect('select-head__cat');
+
+    document.querySelector('#input-sort').addEventListener('input', function() {
+        if (!this.value) return false;
+
+        location.href = this.value;
+    })
 
 </script>
 {#----------------end style for select option----------------#}
