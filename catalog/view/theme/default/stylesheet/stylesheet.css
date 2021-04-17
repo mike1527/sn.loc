@@ -622,9 +622,9 @@ div.required .control-label:before {
 /*	-o-transform: rotate(-45deg);*/
 /*	transform: rotate(-45deg);*/
 /*}*/
-.pagination {
-	margin: 0;
-}
+/*.pagination {*/
+/*	margin: 0;*/
+/*}*/
 /* buttons */
 /*.buttons {*/
 /*	margin: 1em 0;*/
@@ -1140,6 +1140,55 @@ ul.breadcrumb{
 	text-align: center;
 }
 /*-------START INPUT OPTION STYLE--------*/
+
+/*-------START PAGINATION STYLE--------*/
+ul.pagination{
+	display: flex;
+	align-items: center;
+}
+.pagination li a{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 44px;
+	width: 50px;
+	padding: 15px 0;
+	margin: 0 5px;
+	font-size: 18px;
+	background-color: #2EBFAF;
+	color: #fff;
+	text-align: center;
+	outline: none;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	transition: color linear .3s, background-color linear .3s;
+}
+.pagination li a:hover{
+	color: #2EBFAF;
+	background-color: #fff;
+}
+li.active{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 44px;
+	width: 100px;
+	margin: 0 5px;
+	padding: 15px 0;
+	font-size: 18px;
+	color: #4D7EA7;
+	background-color: transparent;
+	text-align: center;
+	outline: none;
+	border: 1px solid #DCDCDC;
+	border-radius: 5px;
+	user-select: none;
+}
+.pagination__next-num, .pagination__prev-num{
+	color: #fff;
+}
+
+/*-------END PAGINATION STYLE--------*/
 
 /*----------------END GLOBAL----------------*/
 
@@ -2082,28 +2131,28 @@ label.label__keep {
 	display: flex;
 	align-items: center;
 }
-.pagination__inner form{
-	margin: 0;
-}
-button.pagination__btn{
-	position: relative;
-	background-color: #2EBFAF;
-	width: 44px;
-	height: 44px;
-	border-radius: 5px;
-	border: 1px solid #2EBFAF;
-	outline: none;
-	cursor: pointer;
-	transition: all .5s;
-}
-button.pagination__btn:hover{
-	background-color: #fff;
-	-webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-	box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
-}
-button.pagination__btn:hover .pagination-left__icon, button.pagination__btn:hover .pagination-right__icon{
-	color: #2EBFAF;
-}
+/*.pagination__inner form{*/
+/*	margin: 0;*/
+/*}*/
+/*button.pagination__btn{*/
+/*	position: relative;*/
+/*	background-color: #2EBFAF;*/
+/*	width: 44px;*/
+/*	height: 44px;*/
+/*	border-radius: 5px;*/
+/*	border: 1px solid #2EBFAF;*/
+/*	outline: none;*/
+/*	cursor: pointer;*/
+/*	transition: all .5s;*/
+/*}*/
+/*button.pagination__btn:hover{*/
+/*	background-color: #fff;*/
+/*	-webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);*/
+/*	box-shadow: 0 6px 12px rgb(0 0 0 / 18%);*/
+/*}*/
+/*button.pagination__btn:hover .pagination-left__icon, button.pagination__btn:hover .pagination-right__icon{*/
+/*	color: #2EBFAF;*/
+/*}*/
 input.pagination__num{
 	height: 44px;
 	width: 100px;

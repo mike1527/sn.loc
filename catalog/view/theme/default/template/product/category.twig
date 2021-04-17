@@ -161,24 +161,9 @@
 
                   <div class="pagination__box">
                       <div class="pagination__inner">
-                          <button class="pagination__btn">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="pagination-left__icon">
-                                  <use xlink:href="/img/icon/sprite.svg#pagginationLeftBtn"></use>
-                              </svg>
-                          </button>
-                          <form action="#">
-                              <input class="pagination__num" type="number" min="1" name="pagination-page">
-                          </form>
-                          <button class="pagination__btn">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="pagination-right__icon">
-                                  <use xlink:href="/img/icon/sprite.svg#pagginationRightBtn"></use>
-                              </svg>
-                          </button>
-                            <div class="pagination__text">{{ results }}</div>
+                          <div class="">{{ pagination }}</div>
+                          <div class="pagination__text">{{ results }}</div>
                       </div>
-            {#        <div class="col-sm-6 text-left">{{ pagination }}</div>#}
-
-
                   </div>
 
                   {% endif %}
