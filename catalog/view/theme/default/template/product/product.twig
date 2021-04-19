@@ -268,21 +268,91 @@
 
                                     {% for option in options %}
 
-        {#                            {% if option.type == 'select' %}#}
-        {#                              <div class="form-group{% if option.required %} required {% endif %}">#}
-        {#                                <label class="control-label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>#}
-        {#                                <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">#}
-        {#                                  <option value="">{{ text_select }}</option>#}
-        {#                                  {% for option_value in option.product_option_value %}#}
-        {#                                    <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}#}
-        {#                                      {% if option_value.price %}#}
-        {#                                        ({{ option_value.price_prefix }}{{ option_value.price }})#}
-        {#                                      {% endif %}#}
-        {#                                    </option>#}
-        {#                                  {% endfor %}#}
-        {#                                </select>#}
-        {#                              </div>#}
-        {#                            {% endif %}#}
+{#                                    {% if option.type == 'select' %}#}
+{#                                      <div class="{% if option.required %} required {% endif %}">#}
+{#                                        <label class="product__content-title" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>#}
+{#                                        <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">#}
+{#                                          <option value="">{{ text_select }}</option>#}
+{#                                          {% for option_value in option.product_option_value %}#}
+{#                                            <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}#}
+{#                                              {% if option_value.price %}#}
+{#                                                ({{ option_value.price_prefix }}{{ option_value.price }})#}
+{#                                              {% endif %}#}
+{#                                            </option>#}
+{#                                          {% endfor %}#}
+{#                                        </select>#}
+{#                                      </div>#}
+{#                                    {% endif %}#}
+
+                                    {#----------------start style for select option----------------#}
+                                    <script>
+                                        function mySelect(elClass)
+                                        {
+                                            if (document.getElementsByClassName(elClass)[0] === undefined) return false;
+
+                                            let item, result, content, input;
+
+                                            document.addEventListener('click', clickDoc);
+
+                                            function clickDoc(e)
+                                            {
+                                                let target = e.target;
+
+                                                if (content !== undefined) closeSelect();
+                                                if (!target.classList.contains('select-head__cat')) return false;
+
+                                                item = target.parentElement;
+                                                result = target.getElementsByClassName('select-result__cat')[0];
+                                                content = item.getElementsByClassName('selectContentWrapper')[0];
+                                                input = item.getElementsByTagName('input')[0];
+
+                                                (content.clientHeight === 0) ? openSelect() : closeSelect();
+
+                                                function openSelect()
+                                                {
+                                                    item.classList.add('open');
+                                                    let height = (content.firstElementChild.clientHeight > 256) ? 200 : content.firstElementChild.clientHeight;
+                                                    content.style.height = height + 'px';
+                                                }
+
+                                                function closeSelect()
+                                                {
+                                                    choiceItem();
+                                                    content.style.height = 0 + 'px';
+                                                    item.classList.remove('open');
+                                                }
+
+                                                function choiceItem()
+                                                {
+                                                    if (!target.hasAttribute('data-option')) return false;
+
+                                                    setActive(target);
+
+                                                    result.innerHTML = target.innerHTML;
+                                                    input.value = target.getAttribute('data-option');
+
+                                                    let inputEvent = new Event('input');
+                                                    input.dispatchEvent(inputEvent);
+                                                }
+
+                                                function setActive(target)
+                                                {
+                                                    content.querySelector('li.active')?.classList.remove('active');
+                                                    target.classList.add('active');
+                                                }
+                                            }
+                                        }
+
+                                        mySelect('select-head__cat');
+
+                                        document.querySelector('#input-sort').addEventListener('input', function() {
+                                            if (!this.value) return false;
+
+                                            location.href = this.value;
+                                        })
+
+                                    </script>
+                                    {#----------------end style for select option----------------#}
 
                                     {% if option.type == 'radio' %}
                                       <div class="form-group{% if option.required %} required {% endif %}">
