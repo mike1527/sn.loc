@@ -264,16 +264,16 @@
 
             <div id="login-popup" class="tab active">
 
-                <form class="login__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopup">
+                <form class="login__form" action="{{ action }}" enctype="multipart/form-data" method="post" id="formPopupLogin">
 
                     <div class="login__item-box">
-                        <label class="login__title" for="input-email">{{ text_popup_login_tel_title }}</label>
-                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="login__item" />
+                        <label class="login__title" for="input-telephone-login">{{ text_popup_login_tel_title }}</label>
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone-login" class="login__item" />
                     </div>
 
                     <div class="login__item-box">
-                        <label class="login__title" for="input-password">{{ text_popup_password_title }}</label>
-                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="login__item" />
+                        <label class="login__title" for="input-password-login">{{ text_popup_password_title }}</label>
+                        <input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password-login" class="login__item" />
                     </div>
 
                     <button type="submit" value="{{ button_login }}" class="login__btn">{{ text_popup_login_btn }}</button>
@@ -286,11 +286,11 @@
 
             <div id="register-popup" class="tab">
 
-                <form class="login__form" enctype="multipart/form-data" method="post" id="formPopup">
+                <form class="login__form" enctype="multipart/form-data" method="post" id="formPopupReg">
 
                     <div class="login__item-box">
-                        <label class="login__title" for="input-telephone">{{ text_popup_login_tel_title }}</label>
-                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone" class="login__item" />
+                        <label class="login__title" for="input-telephone-reg">{{ text_popup_login_tel_title }}</label>
+                        <input type="tel" name="telephone" placeholder="{{ entry_tel }}" id="input-telephone-reg" class="login__item" />
 {#                        {% if error_telephone %}#}
 {#                            <div class="text-danger">{{ error_telephone }}</div>#}
 {#                        {% endif %}#}
@@ -305,8 +305,8 @@
                     </div>
 
                     <div class="login__item-box">
-                        <label class="login__title" for="input-password">{{ text_popup_password_title }}</label>
-                        <input type="password" name="password" placeholder="{{ entry_password }}" id="input-password" class="login__item" />
+                        <label class="login__title" for="input-password-reg">{{ text_popup_password_title }}</label>
+                        <input type="password" name="password" placeholder="{{ entry_password }}" id="input-password-reg" class="login__item" />
 {#                        {% if error_password %}#}
 {#                            <div class="text-danger">{{ error_password }}</div>#}
 {#                        {% endif %}#}
