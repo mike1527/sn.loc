@@ -1,4 +1,11 @@
 {{ header }}
+
+            <div id="filterInner" class="filter__inner">
+                <svg xmlns="http://www.w3.org/2000/svg" class="filter__icon">
+                    <use xlink:href="/img/icon/sprite.svg#filter"></use>
+                </svg>
+            </div>
+
             <div id="product-category" class="container">
 
                 <ul class="breadcrumb">
@@ -22,7 +29,7 @@
                 {% else %}
                 {% set class = 'col-sm-12' %}
                 {% endif %}
-                <div id="content" class="{{ class }}">
+                <div id="content" class="{{ class }} category__content">
                     {{ content_top }}
 
 
@@ -31,34 +38,10 @@
 
                   <div class="category__title-box">
 
-                          <div class="category__title-inner">
+                          <div class="page__title-inner">
                               <h3 class="item__main-title">{{ heading_title }}</h3>
                               <span class="item__main-line"></span>
                           </div>
-
-                          {#                    <div class="category__title-sort">#}
-
-                          {#                        <svg xmlns="http://www.w3.org/2000/svg" class="select-arrow__icon">#}
-                          {#                            <use xlink:href="/img/icon/sprite.svg#selectArrowDown"></use>#}
-                          {#                        </svg>#}
-
-                          {#                      <select id="input-sort" onchange="location = this.value;">#}
-
-                          {#                        {% for sorts in sorts %}#}
-                          {#                          {% if sorts.value == '%s-%s'|format(sort, order) %}#}
-
-                          {#                            <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>#}
-
-                          {#                          {% else %}#}
-
-                          {#                            <option value="{{ sorts.href }}">{{ sorts.text }}</option>#}
-
-                          {#                          {% endif %}#}
-                          {#                        {% endfor %}#}
-
-                          {#                      </select>#}
-                          {#                        #}
-                          {#                    </div>#}
 
                           <div class="category__sorting mySelect">
 
@@ -90,7 +73,7 @@
 
                       </div>
 
-                  <div class="item__wrapper">
+                  <div class="category__inner">
                     {% for product in products %}
 
                       <div class="item-cat__box">
@@ -254,6 +237,33 @@
 
 </script>
 {#----------------end style for select option----------------#}
+
+{#----------------START mobile aside----------------#}
+<script>
+    const btnFilter = document.getElementById('filterInner');
+    const menuFilter = document.getElementById('column-left');
+    const toggleMenuFilter = function() {
+        menuFilter.classList.toggle('filter-open');
+    }
+
+    btnFilter.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMenuFilter();
+    });
+
+    document.addEventListener('click', function(e) {
+        const targetInfoFilter = e.target;
+        const its_Filter = targetInfoFilter == menuFilter || menuFilter.contains(targetInfoFilter);
+        const its_btnFilter = targetInfoFilter == btnFilter;
+        const menu_is_activeFilter = menuFilter.classList.contains('filter-open');
+
+        if (!its_Filter && !its_btnFilter && menu_is_activeFilter) {
+            toggleMenuFilter();
+        }
+    });
+</script>
+
+{#----------------END mobile aside----------------#}
 
 
 
