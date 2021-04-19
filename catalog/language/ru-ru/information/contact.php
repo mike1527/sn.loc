@@ -14,6 +14,7 @@ $_['button_submit_contact']          = 'Отправить заявку';
 $_['text_contact_info_address']      = 'Адрес:';
 $_['text_contact_info_phone']        = 'Телефон:';
 $_['text_contact_info_mail']         = 'Электронная почта:';
+$_['button_continue_home']           = 'На главную';
 
 
 // Heading
@@ -29,6 +30,7 @@ $_['text_fax']       = 'Факс';
 $_['text_open']      = 'Режим работы';
 $_['text_comment']   = 'Дополнительная информация';
 $_['text_success']   = '<p>Ваш запрос был успешно отправлен администрации магазина!</p>';
+$_['text_message']   = 'Ваша заявка отпралена в службу поддержки. В ближайшее время с Вами свяжутся.';
 
 // Entry
 

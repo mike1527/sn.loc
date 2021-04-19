@@ -24,10 +24,15 @@
     {% endif %}
     <div id="content">
       {{ content_top }}
-      <h3 class="item__main-title">{{ heading_title }}</h3>
-      <span class="item__main-line"></span>
 
-      {{ text_message }}
+      <div class="page__title-inner">
+        <h3 class="item__main-title">{{ heading_title }}</h3>
+        <span class="item__main-line"></span>
+      </div>
+
+        <p class="info__text">
+            {{ text_message }}
+        </p>
 
         <div class="item__btn-box">
             <a href="{{ continue }}" class="form__btn" type="submit">{{ button_continue_home }}</a>

@@ -43,8 +43,10 @@
           <div id="content" class="{{ class }}">
             {{ content_top }}
 
-            <h3 class="item__main-title">{{ heading_title_text }}</h3>
-            <span class="item__main-line"></span>
+            <div class="page__title-inner">
+              <h3 class="item__main-title">{{ heading_title_text }}</h3>
+              <span class="item__main-line"></span>
+            </div>
 
             <div class="cart__wrapper">
 
@@ -72,7 +74,7 @@
 
                         <tr>
 
-                          <td aria-label="{{ column_name }}" class="cart__tbody-name">
+                          <td aria-label="{{ column_name }}" class="cart__tbody-name cart__tbody-td">
                             {% if product.thumb %}
                               <a href="{{ product.href }}">
                                 <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-cart" />
@@ -86,7 +88,7 @@
 
                           </td>
 
-                          <td aria-label="{{ column_quantity }}" class="cart__tbody-quantity">
+                          <td aria-label="{{ column_quantity }}" class="cart__tbody-quantity cart__tbody-td">
 
                             <div class="cart__tbody-quantity-inner">
 
@@ -112,9 +114,9 @@
 
                           </td>
 
-                          <td aria-label="{{ column_price }}" class="cart__tbody-price">{{ product.price }} TMT</td>
+                          <td aria-label="{{ column_price }}" class="cart__tbody-price cart__tbody-td">{{ product.price }} TMT</td>
 
-                          <td aria-label="" class="cart__tbody-delete">
+                          <td aria-label="" class="cart__tbody-delete cart__tbody-td">
 
                           <div class="cart__delete-inner">
                             <div class="cart__delete-box">

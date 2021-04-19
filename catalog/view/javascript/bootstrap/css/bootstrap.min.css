@@ -6082,21 +6082,16 @@ button.close {
 .visible-print-inline-block {
     display: none !important
 }
-
 @media print {
     .visible-print-inline-block {
         display: inline-block !important
     }
 }
-
 @media print {
     .hidden-print {
         display: none !important
     }
 }
-
-
-
 /*----------------START MEDIA----------------*/
 @media(max-width: 1400px){
     .dropdown-search{
