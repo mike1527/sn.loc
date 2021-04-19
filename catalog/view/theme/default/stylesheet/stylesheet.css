@@ -2483,7 +2483,7 @@ a.cart__tbody-link{
 	width: 66.3%;
 }
 .contact__info{
-	width: 29.5%;
+	width: 30.5%;
 }
 .contact__inner{
 	display: flex;
@@ -2509,6 +2509,13 @@ a.cart__tbody-link{
 }
 .contact__info-text{
 	font-size: 24px;
+	overflow: hidden;
+}
+.contact__info-text a{
+	transition: color linear .2s;
+}
+.contact__info-text a:hover{
+	color: #2EBFAF;
 }
 .contact__info-tel{
 	margin-top: 20px;
@@ -2663,6 +2670,33 @@ table.table__account{
 		line-height: 36px;
 		margin-bottom: 47px;
 	}
+	.contact__info-title {
+		font-size: 23px;
+	}
+	.contact__info-text {
+		font-size: 22px;
+	}
+	.input__item{
+		height: 70px;
+		padding: 18px 30px;
+	}
+	.contact__form {
+		width: 64.3%;
+	}
+	.contact__info {
+		width: 32.5%;
+	}
+	.input__title{
+		font-size: 23px;
+		margin-bottom: 18px;
+	}
+	.contact__info-box{
+		margin-bottom: 50px;
+	}
+	.form__btn{
+		padding: 20px 0;
+		font-size: 21px;
+	}
 }
 @media(max-width: 1546px){
 	.item__main-title {
@@ -2711,6 +2745,27 @@ table.table__account{
 		font-size: 21px;
 		line-height: 33px;
 		margin-bottom: 38px;
+	}
+	.contact__info-title {
+		font-size: 22px;
+	}
+	.contact__info-text {
+		font-size: 21px;
+	}
+	.input__item{
+		height: 60px;
+		padding: 16px 25px;
+	}
+	.input__title{
+		font-size: 22px;
+		margin-bottom: 15px;
+	}
+	.contact__info-box{
+		margin-bottom: 40px;
+	}
+	.form__btn{
+		padding: 18px 0;
+		font-size: 20px;
 	}
 }
 @media(max-width: 1300px){
@@ -2768,6 +2823,47 @@ table.table__account{
 		font-size: 20px;
 		line-height: 31px;
 		margin-bottom: 32px;
+	}
+	.info__text, .logout__text {
+		font-size: 20px;
+		line-height: 30px;
+		margin-bottom: 33px;
+	}
+	.contact__info-title {
+		font-size: 21px;
+	}
+	.contact__info-text {
+		font-size: 20px;
+	}
+	.input__item{
+		height: 55px;
+		padding: 16px 25px;
+	}
+	.input__item::placeholder, .input__comment::placeholder{
+		font-size: 15px;
+	}
+	.input__title{
+		font-size: 21px;
+		margin-bottom: 13px;
+	}
+	.contact__info-box{
+		margin-bottom: 35px;
+	}
+	.form__btn{
+		padding: 16px 0;
+		font-size: 19px;
+	}
+	.map__icon {
+		width: 21px;
+		height: 19px;
+	}
+	.phone__icon {
+		width: 19.106px;
+		height: 19.106px;
+	}
+	.mail__icon {
+		width: 23.794px;
+		height: 19px;
 	}
 }
 @media(max-width: 1185px){
@@ -2882,6 +2978,36 @@ table.table__account{
 		font-size: 19px;
 		line-height: 29px;
 		margin-bottom: 26px;
+	}
+	.contact__wrapper{
+		flex-direction: column;
+	}
+	.contact__form, .contact__info{
+		width: 100%;
+	}
+	.contact__btn-box{
+		text-align: center;
+	}
+	.contact__info{
+		display: flex;
+		justify-content: space-between;
+	}
+	.contact__info-box{
+		width: 30%;
+	}
+	.form__btn {
+		padding: 13px 0;
+		font-size: 17px;
+		width: 270px;
+	}
+	.contact__info-title {
+		font-size: 20px;
+	}
+	.contact__info-text {
+		font-size: 18px;
+	}
+	.contact__info-tel {
+		margin-top: 6px;
 	}
 }
 @media(max-width: 950px){
@@ -3000,6 +3126,53 @@ table.table__account{
 	.footer__copyright p{
 		font-size: 17px;
 	}
+	.input__title {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}
+	.input__item {
+		height: 47px;
+		padding: 10px 25px;
+		font-size: 17px;
+	}
+	.input__comment{
+		margin-top: 10px;
+		height: 180px;
+		padding: 20px 20px;
+		font-size: 17px;
+	}
+	.input__comment-box {
+		margin-bottom: 30px;
+	}
+	.form__btn {
+		padding: 11px 0;
+		font-size: 16px;
+		width: 240px;
+	}
+	.contact__btn-box {
+		margin-bottom: 70px;
+	}
+	.contact__info-title {
+		font-size: 18px;
+	}
+	.contact__info-text {
+		font-size: 17px;
+	}
+	.contact__info-box {
+		padding-left: 30px;
+	}
+	.phone__icon {
+		width: 17.106px;
+		height: 17.106px;
+	}
+	.mail__icon {
+		width: 20.794px;
+		height: 17px;
+	}
+	.map__icon {
+		width: 19px;
+		height: 17px;
+	}
 }
 @media(max-width: 886px){
 	.item__wrapper{
@@ -3071,6 +3244,33 @@ table.table__account{
 		line-height: 26px;
 		margin-bottom: 23px;
 	}
+	.input__title {
+		font-size: 19px;
+		margin-bottom: 9px;
+	}
+	.input__item {
+		height: 43px;
+		padding: 8px 25px;
+		font-size: 16px;
+	}
+	.input__comment {
+		height: 150px;
+		padding: 13px 20px;
+		font-size: 16px;
+	}
+	.contact__btn-box {
+		margin-bottom: 60px;
+	}
+	.contact__info-title {
+		font-size: 17px;
+		margin-bottom: 10px;
+	}
+	.contact__info-text {
+		font-size: 15px;
+	}
+	.contact__info-box {
+		width: 33%;
+	}
 }
 @media(max-width: 721px){
 	.header__inner-box{
@@ -3135,6 +3335,13 @@ table.table__account{
 	.select-arrow__icon{
 		top: 17px;
 	}
+	.contact__info{
+		flex-direction: column;
+		align-items: center;
+	}
+	.contact__info-box {
+		min-width: 198px;
+	}
 }
 @media(max-width: 646px){
 	.item-cat__box{
@@ -3195,6 +3402,12 @@ table.table__account{
 		line-height: 24px;
 		margin-bottom: 21px;
 	}
+	.contact__inner{
+		flex-direction: column;
+	}
+	.input__contact-box {
+		width: 100%;
+	}
 }
 @media(max-width: 544px){
 	.footer__wrapper{
@@ -3221,6 +3434,24 @@ table.table__account{
 	}
 	.pagination__text{
 		margin: 14px 0 0 0;
+	}
+	.input__title {
+		font-size: 18px;
+		margin-bottom: 5px;
+	}
+	.input__item {
+		height: 37px;
+		font-size: 15px;
+	}
+	.input__comment {
+		height: 140px;
+		font-size: 15px;
+	}
+	.input__item::placeholder, .input__comment::placeholder{
+		font-size: 13px;
+	}
+	.form__btn{
+		font-size: 15px;
 	}
 }
 @media(max-width: 460px) {
