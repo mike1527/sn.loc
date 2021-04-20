@@ -1520,7 +1520,7 @@ h4.catalog__item-title:hover{
 }
 .rating{
 	display: flex;
-	align-items: baseline;
+	align-items: end;
 	margin-bottom: 14px;
 }
 .rating__star-box{
@@ -3428,7 +3428,7 @@ table.table__account{
 		display: flex;
 		flex-direction: column;
 	}
-	.cart__tbody-name{
+	.cart__tbody-td{
 		padding: 5px 0 15px 0;
 	}
 	.cart__tbody-name a img{
