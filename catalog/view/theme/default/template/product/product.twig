@@ -49,13 +49,17 @@
                           </li>
                         {% endif %}
                         {% if images %}
+                            <ul class="product__additional-box">
                           {% for image in images %}
-                            <li class="product__additional-item">
-                              <a class="product__thumbnail-link" href="{{ image.popup }}" title="{{ heading_title }}">
-                                <img class="product__img-additional" src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
-                              </a>
-                            </li>
+
+                                  <li class="product__additional-item">
+                                      <a class="product__thumbnail-link" href="{{ image.popup }}" title="{{ heading_title }}">
+                                          <img class="product__img-additional" src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
+                                      </a>
+                                  </li>
+
                           {% endfor %}
+                            </ul>
                         {% endif %}
                       </ul>
                     {% endif %}
@@ -268,91 +272,21 @@
 
                                     {% for option in options %}
 
-{#                                    {% if option.type == 'select' %}#}
-{#                                      <div class="{% if option.required %} required {% endif %}">#}
-{#                                        <label class="product__content-title" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>#}
-{#                                        <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">#}
-{#                                          <option value="">{{ text_select }}</option>#}
-{#                                          {% for option_value in option.product_option_value %}#}
-{#                                            <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}#}
-{#                                              {% if option_value.price %}#}
-{#                                                ({{ option_value.price_prefix }}{{ option_value.price }})#}
-{#                                              {% endif %}#}
-{#                                            </option>#}
-{#                                          {% endfor %}#}
-{#                                        </select>#}
-{#                                      </div>#}
-{#                                    {% endif %}#}
-
-                                    {#----------------start style for select option----------------#}
-                                    <script>
-                                        function mySelect(elClass)
-                                        {
-                                            if (document.getElementsByClassName(elClass)[0] === undefined) return false;
-
-                                            let item, result, content, input;
-
-                                            document.addEventListener('click', clickDoc);
-
-                                            function clickDoc(e)
-                                            {
-                                                let target = e.target;
-
-                                                if (content !== undefined) closeSelect();
-                                                if (!target.classList.contains('select-head__cat')) return false;
-
-                                                item = target.parentElement;
-                                                result = target.getElementsByClassName('select-result__cat')[0];
-                                                content = item.getElementsByClassName('selectContentWrapper')[0];
-                                                input = item.getElementsByTagName('input')[0];
-
-                                                (content.clientHeight === 0) ? openSelect() : closeSelect();
-
-                                                function openSelect()
-                                                {
-                                                    item.classList.add('open');
-                                                    let height = (content.firstElementChild.clientHeight > 256) ? 200 : content.firstElementChild.clientHeight;
-                                                    content.style.height = height + 'px';
-                                                }
-
-                                                function closeSelect()
-                                                {
-                                                    choiceItem();
-                                                    content.style.height = 0 + 'px';
-                                                    item.classList.remove('open');
-                                                }
-
-                                                function choiceItem()
-                                                {
-                                                    if (!target.hasAttribute('data-option')) return false;
-
-                                                    setActive(target);
-
-                                                    result.innerHTML = target.innerHTML;
-                                                    input.value = target.getAttribute('data-option');
-
-                                                    let inputEvent = new Event('input');
-                                                    input.dispatchEvent(inputEvent);
-                                                }
-
-                                                function setActive(target)
-                                                {
-                                                    content.querySelector('li.active')?.classList.remove('active');
-                                                    target.classList.add('active');
-                                                }
-                                            }
-                                        }
-
-                                        mySelect('select-head__cat');
-
-                                        document.querySelector('#input-sort').addEventListener('input', function() {
-                                            if (!this.value) return false;
-
-                                            location.href = this.value;
-                                        })
-
-                                    </script>
-                                    {#----------------end style for select option----------------#}
+        {#                            {% if option.type == 'select' %}#}
+        {#                              <div class="form-group{% if option.required %} required {% endif %}">#}
+        {#                                <label class="control-label" for="input-option{{ option.product_option_id }}">{{ option.name }}</label>#}
+        {#                                <select name="option[{{ option.product_option_id }}]" id="input-option{{ option.product_option_id }}" class="form-control">#}
+        {#                                  <option value="">{{ text_select }}</option>#}
+        {#                                  {% for option_value in option.product_option_value %}#}
+        {#                                    <option value="{{ option_value.product_option_value_id }}">{{ option_value.name }}#}
+        {#                                      {% if option_value.price %}#}
+        {#                                        ({{ option_value.price_prefix }}{{ option_value.price }})#}
+        {#                                      {% endif %}#}
+        {#                                    </option>#}
+        {#                                  {% endfor %}#}
+        {#                                </select>#}
+        {#                              </div>#}
+        {#                            {% endif %}#}
 
                                     {% if option.type == 'radio' %}
                                       <div class="form-group{% if option.required %} required {% endif %}">
@@ -541,6 +475,76 @@
 
                                     </div>
 
+                                <div class="product__reviews-content">
+
+                                    <h2 class="product__title">{{ text_comment_title }}</h2>
+
+                                    {% if review_status %}
+                                        <form class="form-horizontal" id="form-review-content">
+
+                                            {% if review_guest %}
+                                                <div class="form__name">
+                                                    <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="input__name-form" placeholder="{{ entry_name }}"/>
+                                                </div>
+                                                <div class="form__message">
+                                                    <textarea name="text" rows="5" id="input-review-content" class="input__message-form" placeholder="{{ entry_review }}"></textarea>
+                                                </div>
+
+                                                <div class="form__check-box">
+
+                                                    <div class="form__check-star">
+
+                                                        <div class="star-rating">
+                                                            <div class="star-rating__wrap">
+                                                                <input class="star-rating__input" id="star-rating-5-content" type="radio" name="rating" value="5">
+                                                                <label class="star-rating__label" for="star-rating-5-content" title="5 out of 5 stars">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon-product">
+                                                                        <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                                    </svg>
+                                                                </label>
+                                                                <input class="star-rating__input" id="star-rating-4-content" type="radio" name="rating" value="4">
+                                                                <label class="star-rating__label" for="star-rating-4-content" title="4 out of 5 stars">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon-product">
+                                                                        <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                                    </svg>
+                                                                </label>
+                                                                <input class="star-rating__input" id="star-rating-3-content" type="radio" name="rating" value="3">
+                                                                <label class="star-rating__label" for="star-rating-3-content" title="3 out of 5 stars">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon-product">
+                                                                        <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                                    </svg>
+                                                                </label>
+                                                                <input class="star-rating__input" id="star-rating-2-content" type="radio" name="rating" value="2">
+                                                                <label class="star-rating__label" for="star-rating-2-content" title="2 out of 5 stars">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon-product">
+                                                                        <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                                    </svg>
+                                                                </label>
+                                                                <input class="star-rating__input" id="star-rating-1-content" type="radio" name="rating" value="1">
+                                                                <label class="star-rating__label" for="star-rating-1-content" title="1 out of 5 stars">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" class="item-star__icon-product">
+                                                                        <use xlink:href="/img/icon/sprite.svg#itemStar"></use>
+                                                                    </svg>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <button type="button" id="button-review-content" data-loading-text="{{ text_loading }}" class="review__btn">{{ button_continue_reviews }}</button>
+
+                                                </div>
+                                                {{ captcha }}
+                                            {% else %}
+                                                {{ text_login }}
+                                            {% endif %}
+                                        </form>
+                                    {% endif %}
+
+                                    <div id="review-content"></div>
+
+                                </div>
+
                              </div>
 
                     </div>
@@ -712,11 +716,11 @@ $('#button-cart').on('click', function() {
             }
 
             if (json['success']) {
-                $('.breadcrumb').after('<div class="alert">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                $('.product__btn-box').after('<div class="product__cart-add-alert">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
                 $('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                // $('html, body').animate({ scrollTop: 0 }, 'slow');
 
                 $('#cart > ul').load('index.php?route=common/cart/info ul li');
             }
@@ -825,11 +829,11 @@ $('#button-review').on('click', function() {
             $('.alert-dismissible').remove();
 
             if (json['error']) {
-                $('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                $('.form-horizontal').after('<div class="product__alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
             }
 
             if (json['success']) {
-                $('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+                $('.form-horizontal').after('<div class="product__alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 
                 $('input[name=\'name\']').val('');
                 $('textarea[name=\'text\']').val('');
@@ -848,6 +852,59 @@ $(document).ready(function() {
         }
     });
 });
+</script>
+<script type="text/javascript">
+    $('#review-content').delegate('.pagination a', 'click', function(e) {
+        e.preventDefault();
+
+        $('#review-content').fadeOut('slow');
+
+        $('#review-content').load(this.href);
+
+        $('#review-content').fadeIn('slow');
+    });
+
+    $('#review-content').load('index.php?route=product/product/review&product_id={{ product_id }}');
+
+    $('#button-review-content').on('click', function() {
+        $.ajax({
+            url: 'index.php?route=product/product/write&product_id={{ product_id }}',
+            type: 'post',
+            dataType: 'json',
+            data: $("#form-review-content").serialize(),
+            beforeSend: function() {
+                $('#button-review-content').button('loading');
+            },
+            complete: function() {
+                $('#button-review-content').button('reset');
+            },
+            success: function(json) {
+                $('.alert-dismissible').remove();
+
+                if (json['error']) {
+                    $('.form-horizontal').after('<div class="product__alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+                }
+
+                if (json['success']) {
+                    $('.form-horizontal').after('<div class="product__alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+                    $('input[name=\'name\']').val('');
+                    $('textarea[name=\'text\']').val('');
+                    $('input[name=\'rating\']:checked').prop('checked', false);
+                }
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.thumbnails').magnificPopup({
+            type:'image',
+            delegate: 'a',
+            gallery: {
+                enabled: true
+            }
+        });
+    });
 </script>
 <script>
     $(document).ready(function() {

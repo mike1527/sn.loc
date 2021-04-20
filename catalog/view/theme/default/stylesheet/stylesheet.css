@@ -1884,6 +1884,9 @@ input.pagination__num{
 .product__inner{
 	width: 49.1%;
 }
+.product__reviews-content{
+	display: none;
+}
 .product__content{
 	width: 43%;
 }
@@ -1893,12 +1896,20 @@ ul.thumbnails{
 .product__thumbnail-item{
 	margin-bottom: 10px;
 }
+.product__additional-box{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
 .product__img-main, .product__img-additional{
 	border-radius: 5px;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 .product__additional-item{
-	display: inline-block;
-	margin: 0 6px 6px 0;
+	display: block;
+	margin-bottom: 20px;
 }
 .product__additional-item:nth-child(5n+5){
 	margin-right: 0;
